@@ -1,0 +1,51 @@
+﻿@model IEnumerable<GarageShop.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<section class="flex">
+    <div class="side-bar flex column align-center">
+        <h2>Categroies</h2>
+        <div class="category flex justify-center align-center">
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <h3>Category1:</h3>
+        </div>
+        <div class="category flex  justify-center align-center">
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <h3>Category2:</h3>
+        </div>
+        <div class="category flex justify-center align-center">
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <h3>Category3:</h3>
+        </div>
+        <div class="category flex  justify-center align-center">
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+            <h3>Category1:</h3>
+        </div>
+    </div>
+    <div class="cars-wrapper">
+        <div class="flex column align-center justify-center" style="padding: 20px;">
+            <h1>Our Car App</h1>
+            <input class="serach" type="text" placeholder="serach car....">
+        </div>
+        <div class="cars-container ">
+            @foreach (Product product in Model)
+            {
+                <div class="car ">
+                    <div class="img-container">
+                        <img src="@product.Image">
+                    </div>
+                    <div class="flex justify-space-between" style="margin-bottom: 10px;">
+                        <h4 class="price">@product.Price₪</h4>
+                        <h4 class="car-type">@product.Name</h4>
+                    </div>
+                    <p class="desc">Lorem ipsum dolor sit amet tol consectetur adipisicing elit. </p>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>

@@ -1,5 +1,7 @@
-﻿using GarageShop.Models;
+﻿using GarageShop.Data;
+using GarageShop.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -11,16 +13,19 @@ namespace GarageShop.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly GarageShopContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, GarageShopContext context)
         {
+            _context = context;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View("Shop", await _context.Product.ToListAsync());
         }
 
         public IActionResult Privacy()

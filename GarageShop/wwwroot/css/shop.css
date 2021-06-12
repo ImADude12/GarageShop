@@ -1,0 +1,139 @@
+body {
+    height: 100vh;
+}
+.login {
+    z-index: 3;
+    position: fixed;
+    cursor: default;
+    top: 50%;
+    left: 50%;
+    width: 30vw;
+    min-width: 280px;
+    max-width: 360px;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    text-align: center;
+    transition: 1s;
+    color: rgb(109, 109, 109);
+}
+.sign-up {
+    padding: 5px;
+}
+.login h1 {
+    font-size: 1.6em;
+    margin: 30px;
+}
+.login p {
+    position: absolute;
+    bottom: 160px;
+    width: 90%;
+    left: 5%;
+    text-align: left;
+    font-size: 0.8em;
+}
+.login input,
+.login button {
+    width: 90%;
+    height: 2em;
+    margin-bottom: 1.5em;
+    font-size: 1em;
+}
+.login input {
+    padding: 10px;
+}
+.login h4 {
+    font-weight: normal;
+}
+.login h4 span {
+    font-weight: bold;
+    cursor: pointer;
+}
+button {
+    border: none;
+    cursor: pointer;
+    background-color: #ec9a56;
+}
+button:hover {
+    background-color: #e46b08;
+}
+
+span {
+    font-weight: 700;
+    color: #ec9a56;
+    cursor: pointer;
+}
+
+nav {
+    background-color: rgb(216 216 216);
+}
+.nav-h2 {
+    cursor: pointer;
+}
+.links {
+    width: 150px;
+    margin-right: 50px;
+}
+
+.toy-details {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 1em;
+    width: 200px;
+    text-align: center;
+}
+
+.side-bar {
+    background-color: #eeeeee;
+    width: 10%;
+}
+
+.cars-wrapper {
+    width: 90%;
+}
+.category{
+    width: 100%;
+}
+
+.cars-container {
+    display: grid;
+    gap: 50px;
+    grid-template-columns: repeat(auto-fill, 300px);
+    padding: 30px 50px 50px 50px;
+}
+.img-container {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+}
+.price {
+    margin: 0px;
+}
+.car-type {
+    margin: 0px;
+}
+.desc {
+    margin: 0;
+    text-align: center;
+}
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.car {
+    padding: 10px;
+    /* width: 300px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-between;
+}
+footer {
+    display: flex;
+    background-color: rgb(216 216 216);
+}
+.serach{
+    width: 200px;
+    height: 20px;
+}

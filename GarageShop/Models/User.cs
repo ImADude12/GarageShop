@@ -15,9 +15,11 @@ namespace GarageShop.Models
     }
     public class User
     {
+        [Required]
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Please Enter Username")]
         [StringLength(200, MinimumLength = 2, ErrorMessage ="Length Must Be Between 2 To 200")]
-        [Key]   
         public string Username { get; set; }
 
         [Required]
@@ -36,7 +38,7 @@ namespace GarageShop.Models
         public string Email{ get; set; }
 
         //TODO: Should I Add Datatype to validate only numbers?
-        public UserType UserType { get; set; }
+        public UserType UserType { get; set; } = UserType.Client;
 
         public Cart Cart { get; set; }
     }

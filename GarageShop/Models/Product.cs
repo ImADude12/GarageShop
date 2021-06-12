@@ -27,6 +27,7 @@ namespace GarageShop.Models
         [DataType(DataType.Currency)]
         public int Price { get; set; }
 
+        public int SellerId { get; set; }
         public Seller Seller { get; set; }
 
         public int CategoryId { get; set; }
