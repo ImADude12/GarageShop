@@ -14,7 +14,7 @@ namespace GarageShop.Models
         [StringLength(200, MinimumLength = 2, ErrorMessage = "Length Must Be Between 2 To 200")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Please Enter Image Address")]
+        [Required(ErrorMessage = "Please Enter Image Url")]
         [StringLength(200, MinimumLength = 5, ErrorMessage = "Length Must Be Between 5 To 200")]
         [DataType(DataType.ImageUrl)]
         public String Image { get; set; }

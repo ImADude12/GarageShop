@@ -54,7 +54,7 @@ namespace GarageShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Location")] Branch branch)
+        public async Task<IActionResult> Create([Bind("Id,Name,Address,PhoneNumber,Latitude,Longitude")] Branch branch)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace GarageShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Location")] Branch branch)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Address,PhoneNumber,Latitude,Longitude")] Branch branch)
         {
             if (id != branch.Id)
             {

@@ -16,8 +16,19 @@ namespace GarageShop.Models
 
         // TODO: Should it be string?
         // (Need to be passed to google maps and show location)
-        [Required(ErrorMessage = "Please Enter Location")]
+        [Required(ErrorMessage = "Please Enter Url")]
         [StringLength(200, MinimumLength = 2, ErrorMessage = "Length Must Be Between 2 To 200")]
-        public string Location { get; set; }
+        public string Address { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Phone Number")]
+        [DataType(DataType.PhoneNumber)]
+        public string PhoneNumber { get; set; }
+
+        // TODO: Add regex of only numbers
+        [Required(ErrorMessage = "Please Enter Latitude")]
+        public string Latitude { get; set; }
+
+        [Required(ErrorMessage = "Please Enter Longitude")]
+        public string Longitude { get; set; }
     }
 }
