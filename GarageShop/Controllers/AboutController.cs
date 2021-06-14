@@ -11,18 +11,17 @@ using System.Threading.Tasks;
 
 namespace GarageShop.Controllers
 {
-    public class HomeController : Controller
+    public class AboutController : Controller
     {
         private readonly GarageShopContext _context;
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<AboutController> _logger;
 
 
-        public HomeController(ILogger<HomeController> logger, GarageShopContext context)
+        public AboutController(ILogger<AboutController> logger, GarageShopContext context)
         {
             _context = context;
             _logger = logger;
         }
-
         public IActionResult Index()
         {
             return View();

@@ -11,21 +11,21 @@ using System.Threading.Tasks;
 
 namespace GarageShop.Controllers
 {
-    public class HomeController : Controller
+    public class ShopController : Controller
     {
         private readonly GarageShopContext _context;
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<ShopController> _logger;
 
 
-        public HomeController(ILogger<HomeController> logger, GarageShopContext context)
+        public ShopController(ILogger<ShopController> logger, GarageShopContext context)
         {
             _context = context;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _context.Product.ToListAsync());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
