@@ -1,0 +1,12 @@
+.weather-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.condition-icon {
+    width: 5vw;
+}
+p{
+   margin-inline-end: 10px;
+}

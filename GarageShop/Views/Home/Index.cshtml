@@ -2,7 +2,19 @@
     ViewData["Title"] = "Home Page";
 }
 
+<link rel="stylesheet" href="~/css/home.css" />
+
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="weather-container">
+        <p class="date"></p>
+        <p class="location"></p>
+        <img class="condition-icon" />
+        <p class="temp"></p>
+        <p class="condition"></p>
+
+    </div>
+    @section Scripts{
+        <script src="~/js/home.js"></script>
+    }
 </div>

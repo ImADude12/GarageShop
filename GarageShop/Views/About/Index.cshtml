@@ -1,6 +1,26 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "About";
 }
-<h1>@ViewData["Title"]</h1>
+<link rel="stylesheet" href="~/css/about.css" />
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="about-container">
+    <h1>@ViewData["Title"]</h1>
+
+    <p>
+        GarageShop Parts reaches out across the ISR and Europe and affecting  millions of people’s lives.
+        We have grown to be more than just a car parts
+        company.
+        we are now far greater than that.
+        Whether you are our staff helping run our business or a customer, partner or a member of the general
+        public – every moment of every day our focus is keeping you moving.
+        Whether you are our staff
+    </p>
+    @section Scripts{
+        <script type='text/javascript' src="https://www.bing.com/api/maps/mapcontrol?callback=GetMap&setLang=he&key=BINGMAPKEY" async defer></script>
+        <script src="~/js/about.js"></script>
+    }
+    <div class="map-container" ></div>
+    <span>ראשון לציון- המכבים 4 טל. 05554477| תל אביב- השלום 10 טל. 054217575 | חיפה- המפרץ 3 טל. 077775544</span>
+
+
+</div>
