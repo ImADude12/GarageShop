@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Game";
+}
+
+<link rel="stylesheet" href="~/css/home.css" />
+<div onload=init()>
+    <section class="flex justify-space-around" style="margin-inline-end: 2rem; margin-block-start: 0.5rem;">
+        <div style="padding:0px 10px; box-shadow: 1px 1px 4px rgb(194, 194, 194);">
+            <h1 style="text-align: center;">Pick Image</h1>
+            <div class="canvas-section-wrapper">
+                <div class="main-wrapper main-layout ">
+                    <div class="img-wrapper main-layout grid ">
+                    </div>
+
+                    <div class="content-wrapper main-layout flex ">
+                    </div>
+                </div>
+                <div class="canvas-container main-layout hidden">
+                    <canvas id="my-canvas" height="200" width="200"></canvas>
+                </div>
+                <div class="btn-container hidden">
+
+                    <div class="txt-container main-layout flex flex-coulmn align-center">
+                        <input id="txt-input" class="txt-input main-layout hidden" type="text" placeholder="Text...."
+                               ontouchstart="onTxtInput(this)" onkeyup="onTxtInput(this)">
+                    </div>
+                    <div class="btns-wrapper flex justify-center align-center">
+                        <button class="line-switch flex align-center btn home-side-btn" onclick="onSwitchLines()">
+                            <img style="width: 28px;" src="../svg/swap2.png" alt="switch-line">
+                        </button>
+                        <button class="add-line btn home-side-btn" onclick="onAddLine()">
+                            <img style="width: 25px;"
+                                 src="~/svg/add-line.png" alt="add-line">
+                        </button>
+                        <button style="margin-left: 10px;" class="line-height btn home-side-btn"
+                                onclick="onLineHeightChange(-10)">
+                            <img style="transform: rotate(-90deg); width: 25px;"
+                                 src="~/svg/right-arrow.png" alt="Upper">
+                        </button>
+                        <button style="margin-left: 10px;" class="line-height btn home-side-btn"
+                                onclick="onLineHeightChange(+10)">
+                            <img style="transform: rotate(90deg); width: 25px;"
+                                 src="~/svg/right-arrow.png" alt="Upper">
+                        </button>
+                        <button style="padding: 7px;"
+                                class="delete-line flex align-center just-center btn home-side-btn"
+                                onclick="onDeleteLine()">
+                            <img style="width: 25px;" src="./svg/cancel.png"
+                                 alt="add-line">
+                        </button>
+                    </div>
+                    <div class="funcions-container flex align-center justify-center ">
+                        <button class="btn first line-height" onclick="onAlign('left')">
+                            <img class="svgs"
+                                 src="~/svg/left.svg">
+                        </button>
+                        <button class="btn first line-height" onclick="onAlign('center')">
+                            <img class="svgs"
+                                 src="~/svg/center.svg">
+                        </button>
+                        <button class="btn first line-height" onclick="onAlign('right')">
+                            <img class="svgs"
+                                 src="~/svg/right.svg">
+                        </button>
+                        <button class="btn first font-size" onclick="onFontSizeChange(2)">
+                            <img class="svgs"
+                                 src="~~/svg/increase-font-icon.png" alt="">
+                        </button>
+                        <button class="btn first font-size" onclick="onFontSizeChange(-2)">
+                            <img class="svgs"
+                                 src="~/svg/decrease-font-icon.png" alt="">
+                        </button>
+                        <!-- <label for="color"> <img src="svg/paint-board-and-brush.png" alt=""> </label> -->
+                        <input class="color" type="color" name="color" id="color" class="color-input"
+                               onchange="onChangeColor(this.value)">
+                        <input class="color" type="color" name="strokeColor" id="strokeColor" class="line-height"
+                               onchange="onChangeStroke(this.value)">
+                        <select style="font-weight: 900;" class="font-select" onchange="onChangeFont(this.value)">
+                            <option value="impact">Impact</option>
+                            <option value="arial">Arial</option>
+                        </select>
+                    </div>
+                    <form class="form flex align-center justify-center" action="" method="POST"
+                          enctype="multipart/form-data" onsubmit="uploadImg(this, event)">
+                        <input name="img" id="imgData" type="hidden" />
+                        <button class="home-btn" type="submit">Publish</button>
+                        <!-- <button class="home-btn" type="submit">Publish</button> -->
+                        <a href="#" class="home-btn" onclick="downloadImg(this)" download="my-img.jpg">
+                            Download as
+                            jpeg
+                        </a>
+                        <div class="share-container"></div>
+                        <!-- <input class="file-input btn" type="file" name="image" onchange="onImgInput(event)" /> -->
+                    </form>
+                    <div class="home-btn-continaer flex justify-center align-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/js/storage-service.js"></script>
+    <script src="~/js/meme-service.js"></script>
+    <script src="~/js/meme-controller.js"></script>
+</div>

@@ -18,6 +18,7 @@
             <h2 style="margin:0px;margin-left: 20px;"><img style="margin-left: 20px; width: 50px;" src="~/img/c.png" alt=""></h2>
             <div class="links flex justify-space-between">
                 <a class="nav-h2" asp-area="" asp-controller="home" asp-action="Index">Home</a>
+                <a class="nav-h2" asp-area="" asp-controller="home" asp-action="Game">Game</a>
                 <a class="nav-h2" asp-area="" asp-controller="shop" asp-action="Index">Shop</a>
                 <a class="nav-h2" asp-area="" asp-controller="carts" asp-action="Index">Cart</a>
                 @if (Context.User != null && Context.User.Claims.Count() > 0)
