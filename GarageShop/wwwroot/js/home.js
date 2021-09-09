@@ -1,6 +1,9 @@
-﻿$(function () {
+﻿
+$(function () {
     getCoordintes()
 });
+
+
 function getCoordintes() {
     var options = {
         enableHighAccuracy: true,
@@ -14,7 +17,7 @@ function getCoordintes() {
         var lng = getFlooredFixed(crd.longitude, 2).toString();
 
         console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-        getWeather(lat,lng);
+        getWeather(lat, lng);
         return;
 
     }
@@ -32,7 +35,9 @@ function getFlooredFixed(v, d) {
 function getWeather(lat,lng) {
     var ajaxCall = function () {
         $.ajax({
-            url: `https://api.weatherapi.com/v1/current.json?key=WEATHERKEY&q=${lat},${lng}&aqi=yes `,
+            type:"GET",
+            url: `/home/GetWeatherJSON`,
+            data: { lat: lat, lng: lng },
             success: setWeather,
         })
     }();
@@ -41,7 +46,7 @@ function getWeather(lat,lng) {
 }
 
 function setWeather(res) {
-    var weather = JSON.parse(JSON.stringify(res));
+    var weather = JSON.parse(res);
     var date = weather.location.localtime.split(" ")
     var currWeather = weather.current
     $(".date").html(date[0]);

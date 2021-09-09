@@ -1,0 +1,9 @@
+﻿.svg-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.svg-container svg {
+    display: block;
+    margin: 0;
+}

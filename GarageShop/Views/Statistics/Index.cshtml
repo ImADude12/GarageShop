@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Statistics";
+}
+
+<link rel="stylesheet" href="~/css/statistics.css" />
+<div class="svg-container">
+    <h1 ><u>Products each catagory</u></h1>
+    <svg  id="pie-svg" width="500" height="400"/>
+    <h1 ><u>Products each Seller</u></h1>
+    <svg id="chart-svg" width="500" height="400" />
+    </div>
+    @section Scripts{
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script src="~/js/statistics.js"></script>
+    }
