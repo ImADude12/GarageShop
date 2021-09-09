@@ -1,0 +1,19 @@
+nav {
+    /* background-color: rgb(246 246 246); */
+    background-color:rgb(251 251 251);
+    box-shadow: 1px 1.5px #cecece;
+}
+
+.nav-h2 {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.nav-h2:hover{
+    background-color: #e0e0e075;
+}
+
+.links {
+    width: 150px;
+    margin-right: 100px;
+}

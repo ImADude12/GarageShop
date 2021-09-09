@@ -25,7 +25,7 @@ function getMap() {
         ]
     try {
         var map = new Microsoft.Maps.Map('.map-container', {
-            credentials: 'BING MAPS KEY',
+            credentials: 'AtQ5syZg_44nIy3Vc1B2mRtzIlUMpPHTlAXyywJbXIWVWWgqfIjmDJ0fUyeC-sSo',
             center: new Microsoft.Maps.Location(31.971823288843936, 34.803743362426765),
             mapTypeId: Microsoft.Maps.MapTypeId.road,
             zoom: 8

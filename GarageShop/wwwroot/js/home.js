@@ -32,7 +32,7 @@ function getFlooredFixed(v, d) {
 function getWeather(lat,lng) {
     var ajaxCall = function () {
         $.ajax({
-            url: `https://api.weatherapi.com/v1/current.json?key=WEATHERKEY&q=${lat},${lng}&aqi=yes `,
+            url: `https://api.weatherapi.com/v1/current.json?key=dc5c317d52cd480dbd3185526211506&q=${lat},${lng}&aqi=yes `,
             success: setWeather,
         })
     }();

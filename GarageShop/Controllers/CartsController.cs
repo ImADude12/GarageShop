@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GarageShop.Data;
 using GarageShop.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GarageShop.Controllers
 {
@@ -19,6 +20,7 @@ namespace GarageShop.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Carts
         public async Task<IActionResult> Index()
         {

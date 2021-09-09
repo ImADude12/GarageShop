@@ -1,139 +1,257 @@
-h1{
+body{
     margin: 0;
 }
-.login {
-    z-index: 3;
-    position: fixed;
-    cursor: default;
-    top: 50%;
-    left: 50%;
-    width: 30vw;
-    min-width: 280px;
-    max-width: 360px;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    text-align: center;
-    transition: 1s;
-    color: rgb(109, 109, 109);
+.sm-font {
+    font-size: rem(12px);
 }
-.sign-up {
+.md-font {
+    font-size: rem(18px);
+}
+.lg-font {
+    font-size: rem(24px);
+}
+.xl-font {
+    font-size: rem(30px);
+}
+.no-overflow-x {
+    overflow-x: hidden;
+}
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.clean-list > li {
+    margin: 0;
+    padding: 0;
+}
+textarea.fluid {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    resize: none;
+    box-sizing: border-box;
+    margin: auto;
+}
+.bolded {
+    font-weight: bold;
+}
+.blurred {
+    filter: blur(4px);
+}
+.relative {
+    position: relative;
+}
+.clip-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+}
+.pre-format {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+.nowrap {
+    white-space: nowrap;
+}
+.inline-flex {
+    display: inline-flex;
+}
+.flex {
+    display: flex;
+}
+.inline-flex.column,
+.flex.column {
+    flex-direction: column;
+}
+.inline-flex.justify-space-evenly,
+.flex.justify-space-evenly {
+    justify-content: space-evenly;
+}
+.inline-flex.justify-center,
+.flex.justify-center {
+    justify-content: center;
+}
+.inline-flex.justify-space-around,
+.flex.justify-space-around {
+    justify-content: space-around;
+}
+.inline-flex.justify-space-between,
+.flex.justify-space-between {
+    justify-content: space-between;
+}
+.inline-flex.justify-start,
+.flex.justify-start {
+    justify-content: flex-start;
+}
+.inline-flex.justify-end,
+.flex.justify-end {
+    justify-content: flex-end;
+}
+.inline-flex.align-start,
+.flex.align-start {
+    align-items: flex-start;
+}
+.inline-flex.align-center,
+.flex.align-center {
+    align-items: center;
+}
+.inline-flex.align-end,
+.flex.align-end {
+    align-items: flex-end;
+}
+.inline-flex.align-baseline,
+.flex.align-baseline {
+    align-items: baseline;
+}
+.inline-flex .align-self-end,
+.flex .align-self-end {
+    align-self: flex-end;
+}
+.inline-flex .align-self-start,
+.flex .align-self-start {
+    align-self: flex-start;
+}
+.inline-flex .align-self-center,
+.flex .align-self-center {
+    align-self: center;
+}
+.inline-flex .grow,
+.flex .grow {
+    flex-grow: 1;
+}
+.inline-flex.wrap,
+.flex.wrap {
+    flex-wrap: wrap;
+}
+.inline-flex.auto-center,
+.flex.auto-center {
+    justify-content: center;
+    align-items: center;
+}
+.text-center {
+    text-align: center;
+}
+.capitalize {
+    text-transform: capitalize;
+}
+.center-block {
+    display: block;
+    margin: 0 auto;
+}
+.fast-trans {
+    transition: 0.25s all;
+}
+.normal-trans {
+    transition: 0.4s all;
+}
+.slow-trans {
+    transition: 0.7s all;
+}
+.p5 {
     padding: 5px;
 }
-.login h1 {
-    font-size: 1.6em;
-    margin: 30px;
+.p10 {
+    padding: 10px;
 }
-.login p {
+.p20 {
+    padding: 20px;
+}
+.m5 {
+    margin: 5px;
+}
+.m10 {
+    margin: 10px;
+}
+.m20 {
+    margin: 20px;
+}
+.normBackground {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.block-end-divider {
+    padding-block-end: 15px;
+    margin-block-end: 15px;
+    border-block-end: 1px solid lightgray;
+}
+.disabled {
+    cursor: default !important;
+    color: #b3b3b3 !important;
+}
+.disabled g {
+    fill: #b3b3b3 !important;
+}
+.link-txt {
+    color: #1a73e8;
+    cursor: pointer;
+}
+.pointer {
+    cursor: pointer;
+}
+.no-select {
+    user-select: none;
+}
+.simple-form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 15px auto;
+}
+.simple-form > * {
+    margin-block-end: 10px;
+}
+.simple-form input:not([type="checkbox"]) {
+    padding: 5px 8px;
+    width: 100%;
+}
+.simple-form .form-errors {
+    text-align: center;
+    margin-top: 24px;
+    color: red;
+    font-size: 15px;
+}
+form input.input-err {
+    border: 1px solid red;
+    animation: blink 0.3s;
+}
+@keyframes blink {
+    to {
+        border-color: transparent;
+    }
+}
+.tooltip {
+    position: relative;
+}
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
     position: absolute;
-    bottom: 160px;
-    width: 90%;
-    left: 5%;
-    text-align: left;
-    font-size: 0.8em;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -71px;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
-.login input,
-.login button {
-    width: 90%;
-    height: 2em;
-    margin-bottom: 1.5em;
-    font-size: 1em;
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
 }
-.login input {
-    padding: 10px;
-}
-.login h4 {
-    font-weight: normal;
-}
-.login h4 span {
-    font-weight: bold;
-    cursor: pointer;
-}
-button {
-    border: none;
-    cursor: pointer;
-    background-color: #ec9a56;
-}
-button:hover {
-    background-color: #e46b08;
-}
-
-span {
-    font-weight: 700;
-    color: #ec9a56;
-    cursor: pointer;
-}
-
-nav {
-    background-color: rgb(216 216 216);
-}
-.nav-h2 {
-    cursor: pointer;
-}
-.links {
-    width: 150px;
-    margin-right: 50px;
-}
-
-.toy-details {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    padding: 1em;
-    width: 200px;
-    text-align: center;
-}
-
-.side-bar {
-    background-color: #eeeeee;
-    width: 10%;
-}
-
-.cars-wrapper {
-    width: 90%;
-}
-.category{
-    width: 100%;
-}
-
-.cars-container {
-    display: grid;
-    gap: 50px;
-    grid-template-columns: repeat(auto-fill, 300px);
-    padding: 30px 50px 50px 50px;
-}
-.img-container {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 10px;
-}
-.price {
-    margin: 0px;
-}
-.car-type {
-    margin: 0px;
-}
-.desc {
-    margin: 0;
-    text-align: center;
-}
-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.car {
-    padding: 10px;
-    /* width: 300px; */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: space-between;
-}
-footer {
-    display: flex;
-    background-color: rgb(216 216 216);
-}
-.serach{
-    width: 200px;
-    height: 20px;
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
 }
