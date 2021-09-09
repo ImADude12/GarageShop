@@ -1,19 +1,18 @@
-﻿@model IEnumerable<GarageShop.Models.Product>
-
+﻿@model dynamic
 @{
     ViewData["Title"] = "Shop";
 }
 
 <link rel="stylesheet" href="~/css/shop.css">
- @*<form asp-action="Search">
+<div class="align-self-center">
+ <form class="flex" asp-action="Search">
         <input name="queryName" placeholder="Enter something to search" />
         <input type="submit" value="Search" class="btn btn-primary" />
-    </form>*@
-<div class="flex column justify-space-between ">
-    <section class="flex">
-        <div class="flex column">
+    </form>
+    <section class="">
+        <div class="">
         </div>
-        <div class="side-bar flex column align-center">
+        <div class="categories-container">
             <h2>Categories</h2>
             <label class="container">
                 One
@@ -36,14 +35,21 @@
                 <span class="checkmark"></span>
             </label>
         </div>
+        <
         <div class="cars-wrapper">
             <div class="flex column align-center justify-center" style="padding: 20px;">
-                <h1>Our Car App</h1>
-                <input class="search" type="text" placeholder="serach car....">
-
+         
             </div>
+            <div>
+
+                 <ul>
+                @foreach (Category category in Model.Category) { 
+                <li>@category.Name</li>
+                }
+                </ul>
+                </div>
             <div class="cars-container ">
-                @foreach (Product product in Model)
+                @foreach (Product product in Model.Product)
                 {
                     <div class="car ">
                         <div class="img-container">

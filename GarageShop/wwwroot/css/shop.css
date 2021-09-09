@@ -1,3 +1,6 @@
+* {
+margin: 0;
+}
 
 .cars-wrapper {
     color: rgb(41, 41, 41) !important;
@@ -25,6 +28,9 @@
     width: 100%;
 }
 
+.categories-container input {
+opacity:0;
+}
 /* work */
 .container {
     margin-block-start: 20px;
@@ -40,17 +46,9 @@
     user-select: none;
     display: flex;
     justify-content: space-between;
-    width: 100px;
 }
 
-/* Hide the browser's default checkbox */
-.container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
+
 
 /* Create a custom checkbox */
 .checkmark {
