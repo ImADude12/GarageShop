@@ -1,0 +1,14 @@
+﻿* {
+    margin : 0;
+}
+.btn {
+    border: 5px solid;
+    text-decoration: none;
+    transition: all .4s ease;
+    background: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) ;
+}
+ .btn:hover, .btn:focus {
+        background: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) ;
+        border: 5px solid #fff !important;
+        box-shadow: #222 1px 0 10px;
+    }

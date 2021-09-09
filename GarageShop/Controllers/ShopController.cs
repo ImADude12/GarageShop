@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,9 +25,12 @@ namespace GarageShop.Controllers
             _logger = logger;
         }
         [Authorize]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? categoryId)
         {
-            return View(await _context.Product.ToListAsync());
+            dynamic mymodel = new ExpandoObject();
+            mymodel.Products =_context.Product.Include(a => a.Category).Where(a => (a.CategoryId.Equals(categoryId) || categoryId == null)).ToListAsync();
+            mymodel.Category = _context.Category.ToListAsync();
+                return View("Index", await mymodel);
         }
 
         public async Task<IActionResult> Search(string queryName)

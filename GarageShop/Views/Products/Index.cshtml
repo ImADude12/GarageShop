@@ -4,7 +4,8 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<link rel="stylesheet" href="~/css/modelPannel.css" />
+<h1>Products</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -16,57 +17,28 @@
 </form>
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Seller)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
+
+
+@foreach (var item in Model)
+{
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">
                 @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
+            </h5>
+            <p class="card-text">
                 @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Seller.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+            </p>
+            <p class="card-text"><b>Price</b>  @Html.DisplayFor(modelItem => item.Price)</p>
+            <p class="card-text">
+                <b>Category</b>  @Html.DisplayFor(modelItem => item.Category.Name)
+            </p>  <p class="card-text">
+                <b>Seller</b>  @Html.DisplayFor(modelItem => item.Seller.Name)
+            </p>
+            <p class="card-text"></p>
+            <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+            <a class="btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </div>
+    </div>
 }
-    </tbody>
-</table>
+
