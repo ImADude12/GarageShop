@@ -17,7 +17,12 @@
         <nav class="flex justify-space-between ">
             <h2 style="margin:0px;margin-left: 20px;"><img style="margin-left: 20px; width: 50px;" src="~/img/c.png" alt=""></h2>
             <div class="flex">
-         
+                @using System.Security.Claims;
+                @if (Context.User != null && Context.User.HasClaim(ClaimTypes.Role, "Admin"))
+                {
+
+                    <a class="nav-h2" asp-area="" asp-controller="users" asp-action="Logout">Admin Panel</a>
+                }
                 <a class="nav-h2" asp-area="" asp-controller="home" asp-action="Index">Home</a>
                 <a class="nav-h2" asp-area="" asp-controller="home" asp-action="Game">Game</a>
                 <a class="nav-h2" asp-area="" asp-controller="shop" asp-action="Index">Shop</a>

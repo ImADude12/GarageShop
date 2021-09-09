@@ -7,36 +7,31 @@ $(window).on('load', function () {
 
 
 function getMap() {
-        var branches = [{
-            location:
-                { lat: 31.971823288843936, lon: 34.803743362426765 },
-            name: "סניף ראשון לציון"
-        }
-            , {
-            location:
-                { lat: 31.571855588843936, lon: 34.803743362426765 },
-            name: "סניף קריית גת"
-        }
-            , {
-            location:
-                { lat: 32.571855588843936, lon: 35.103743362426765 },
-            name: "סניף חיפה"
-        }
-        ]
+     
     try {
+       
+       $.ajax({
+            type: "GET",
+            url: `branches/All`,
+            success: initialMap,
+        })
+        
+        function initialMap(branches) {
+            console.log(branches)
         var map = new Microsoft.Maps.Map('.map-container', {
             credentials: 'AtQ5syZg_44nIy3Vc1B2mRtzIlUMpPHTlAXyywJbXIWVWWgqfIjmDJ0fUyeC-sSo',
-            center: new Microsoft.Maps.Location(31.971823288843936, 34.803743362426765),
+            center: new Microsoft.Maps.Location(branches[0].latitude, branches[0].longitude),
             mapTypeId: Microsoft.Maps.MapTypeId.road,
             zoom: 8
         });
         branches.forEach(branch => {
-            createPin(branch.location.lat, branch.location.lon, map, branch.name);
+            createPin(branch.latitude, branch.longitude, map, branch.name);
         });
+        }
     }
     catch (Ex) {
-       alert("Failed try to get map again")
-        setTimeout(() => getMap(), 1000)
+        alert("Failed try to get map again")
+        setTimeout(() => getMap(), 10000)
         }
 }
 
