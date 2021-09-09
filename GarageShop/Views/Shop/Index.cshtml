@@ -5,6 +5,10 @@
 }
 
 <link rel="stylesheet" href="~/css/shop.css">
+ @*<form asp-action="Search">
+        <input name="queryName" placeholder="Enter something to search" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </form>*@
 <div class="flex column justify-space-between ">
     <section class="flex">
         <div class="flex column">
@@ -36,6 +40,7 @@
             <div class="flex column align-center justify-center" style="padding: 20px;">
                 <h1>Our Car App</h1>
                 <input class="search" type="text" placeholder="serach car....">
+
             </div>
             <div class="cars-container ">
                 @foreach (Product product in Model)
@@ -50,8 +55,8 @@
                         </div>
                         <p class="desc">@product.Description</p>
                         <!--          <div> <a href="#"  class="animated-button victoria-one">
-                    Continue</a>
-            </div> -->
+                                Continue</a>
+                        </div> -->
                         <div>
                             <a href="#" class="animated-button victoria-one">
                                 Continue
@@ -61,7 +66,7 @@
                     </div>
                 }
 
-                </div>
+            </div>
 
 
         </div>

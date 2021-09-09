@@ -25,7 +25,11 @@ namespace GarageShop.Controllers
             var garageShopContext = _context.Product.Include(p => p.Category).Include(p => p.Seller);
             return View(await garageShopContext.ToListAsync());
         }
-
+        public async Task<IActionResult> Search(string queryName)
+        {
+            var searchContext = _context.Product.Include(a => a.Category).Where(a => (a.Name.Contains(queryName) || queryName == null));
+            return View("Index", await searchContext.ToListAsync());
+        }
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {

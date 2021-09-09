@@ -29,6 +29,12 @@ namespace GarageShop.Controllers
             return View(await _context.Product.ToListAsync());
         }
 
+        public async Task<IActionResult> Search(string queryName)
+        {
+            var searchContext = _context.Product.Include(a => a.Category).Where(a => (a.Name.Contains(queryName) || queryName == null));
+            return View("Index", await searchContext.ToListAsync());
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

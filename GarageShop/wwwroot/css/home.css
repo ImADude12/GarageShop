@@ -8,7 +8,17 @@
     min-height: min-content;
     justify-content: center;
 }
-
+.weather-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+p {
+    margin-inline-end: 10px;
+}
+.condition-icon {
+    width: 5vw;
+}
 canvas {
     display: block;
     margin: 1.25rem auto;
@@ -243,7 +253,7 @@ canvas {
 }
 a.animated-button:link,
 a.animated-button:visited {
-    position: relatfive;
+    position: relative;
     display: block;
     margin: 30px auto 0;
     padding: 14px 15px;
