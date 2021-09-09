@@ -25,7 +25,8 @@ namespace GarageShop.Controllers
         public async Task<IActionResult> Index()
         {
             var garageShopContext = _context.Cart.Include(c => c.User);
-            return View(await garageShopContext.ToListAsync());
+            return View(await _context.Product.ToListAsync());
+
         }
 
         // GET: Carts/Details/5

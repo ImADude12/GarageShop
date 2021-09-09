@@ -1,35 +1,28 @@
-﻿@model IEnumerable<GarageShop.Models.Cart>
+﻿@model IEnumerable<GarageShop.Models.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Cart";
 }
+<link rel="stylesheet" href="~/css/cart.css" />
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Email)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<section class="class-wrappper">
+    <div class="cart-side-bar flex column" style="position: fixed;">
+        <h1>Cart</h1>
+        <div>
+            <span style="color: green;">+</span> <span>Trust</span>
+        </div>
+        <div>
+            <span style="color: green;">+</span> <span>Price</span>
+        </div>
+        <div>
+            <span style="color: green;">+</span> <span>Reallibilty</span>
+        </div>
+        <p class="price"> Price : <span>100₪</span></p>
+        <div>
+            <a style="margin-top: 10px !important; " href="#" class="animated-button victoria-one">
+                Purchase
+            </a>
+        </div>
+    </div>
+  
+</section>

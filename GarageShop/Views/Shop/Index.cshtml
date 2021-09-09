@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<GarageShop.Models.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Shop";
 }
 
 <link rel="stylesheet" href="~/css/shop.css">
@@ -50,7 +50,7 @@
                             <img src="@product.Image">
                         </div>
                         <div class="flex justify-space-between" style="margin-bottom: 10px;">
-                            <h4 class="price">@product.Price₪</h4>
+                            <h4 class="price">$@product.Price</h4>
                             <h4 class="car-type">@product.Name</h4>
                         </div>
                         <p class="desc">@product.Description</p>
@@ -58,7 +58,7 @@
                                 Continue</a>
                         </div> -->
                         <div>
-                            <a href="#" class="animated-button victoria-one">
+                            <a href="/products/details/@product.Id" class="animated-button victoria-one">
                                 Continue
                             </a>
                         </div>
