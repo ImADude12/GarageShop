@@ -1,5 +1,6 @@
 ﻿using GarageShop.Data;
 using GarageShop.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -22,7 +23,7 @@ namespace GarageShop.Controllers
             _context = context;
             _logger = logger;
         }
-
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Product.ToListAsync());

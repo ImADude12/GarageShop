@@ -1,9 +1,33 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
-    Layout = "_Layout2";//Sets the layout(layout is ours, layout2 is theirs)
+    ViewData["Title"] = "Login";
+    Layout = "_Layout";//Sets the layout(layout is ours, layout2 is theirs)
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" href="~/css/login.css">
+<div class="background-div">
+    <section class="register-wrapper flex">
+        <div class="border">
+            <div class="login-wrapper">
+                <div class="register-img-container">
+                    <img src="../img/register.png" alt="">
+                </div>
+                <div class="login">
+                    <h1>Sign In to cars website</h1>
+                    <h4 class="continue">login to continue</h4>
+                    <form class="frm">
+                        <input type="text" name="username" placeholder="Username" autoFocus />
+                        <br />
+                        <input type="password" name="password" placeholder="Password" />
+                        <br />
+                        <div class="flex">
+                            <button class="rounded">Continue</button>
+
+                        </div>
+                        <hr />
+                        <h4>Not a member yet ? <span>Join Now</span></h4>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Net;
+using System.Net.Http;
 
 
 namespace GarageShop.Controllers
@@ -17,6 +17,7 @@ namespace GarageShop.Controllers
     {
         private readonly GarageShopContext _context;
         private readonly ILogger<HomeController> _logger;
+        private static readonly HttpClient client = new HttpClient();
 
 
         public HomeController(ILogger<HomeController> logger, GarageShopContext context)
