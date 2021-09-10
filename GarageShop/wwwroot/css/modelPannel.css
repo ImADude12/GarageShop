@@ -1,14 +1,27 @@
 ﻿* {
     margin : 0;
+
+}
+.cards-container {
+display: flex;
+flex-wrap: wrap;
+margin-top: 20px;
+}
+.card {
+   margin-inline-end: 10px;
+    background-color: white;
+    border: 3px solid black;
+    margin-bottom: 2rem;
 }
 .btn {
-    border: 5px solid;
+    color: white;
+    border: 3px solid;
     text-decoration: none;
+    background-color: #5959e1;
     transition: all .4s ease;
-    background: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) ;
 }
- .btn:hover, .btn:focus {
-        background: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) ;
-        border: 5px solid #fff !important;
+    .btn:hover, .btn:focus {
+        background-color: #7a7aef;
+        border: 5px solid white;
         box-shadow: #222 1px 0 10px;
     }

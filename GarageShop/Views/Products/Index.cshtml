@@ -5,29 +5,30 @@
 }
 
 <link rel="stylesheet" href="~/css/modelPannel.css" />
-<h1>Products</h1>
+<h1>Products Pannel</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 
 <form asp-action="Search">
     <input name="queryName" placeholder="Enter something to search" />
-    <input type="submit" value="Search" class="btn btn-primary" />
+    <input type="submit" value="Search" class=" btn-primary" />
 </form>
 
+ <a asp-action="Create"  class="link-success">Add product</a>
 
 
+<div class="cards-container">
 
 @foreach (var item in Model)
 {
     <div class="card" style="width: 18rem;">
         <div class="card-body">
+
             <h5 class="card-title">
                 @Html.DisplayFor(modelItem => item.Name)
             </h5>
+            <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
             <p class="card-text">
-                @Html.DisplayFor(modelItem => item.Description)
+                <b>Description</b> @Html.DisplayFor(modelItem => item.Description)
             </p>
             <p class="card-text"><b>Price</b>  @Html.DisplayFor(modelItem => item.Price)</p>
             <p class="card-text">
@@ -36,9 +37,12 @@
                 <b>Seller</b>  @Html.DisplayFor(modelItem => item.Seller.Name)
             </p>
             <p class="card-text"></p>
-            <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-            <a class="btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            <div class="flex align-self-center">
+                <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a class="btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </div>
         </div>
     </div>
 }
+</div>
 
