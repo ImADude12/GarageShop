@@ -4,7 +4,6 @@
 
 .main-wrapper {
     display: flex;
-    margin: 0 auto;
     min-height: min-content;
     justify-content: center;
 }

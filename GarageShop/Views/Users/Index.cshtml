@@ -1,59 +1,44 @@
 ﻿@model IEnumerable<GarageShop.Models.User>
 
+
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<link rel="stylesheet" href="~/css/modelPannel.css" />
+<h1>Users Pannel</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Username)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserType)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserType)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+@*<form asp-action="Search">
+    <input name="queryName" placeholder="Enter something to search" />
+    <input type="submit" value="Search" class=" btn-primary" />
+</form>*@
+
+<a asp-action="Create" class="link-success">Add User</a>
+
+
+<div class="cards-container">
+
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    <b>FullName</b>  @Html.DisplayFor(modelItem => item.FullName)
+                </h5>
+                <p class="card-text">
+                    <b>Username</b> @Html.DisplayFor(modelItem => item.Username)
+                </p>
+                <p class="card-text"><b>Email</b>  @Html.DisplayFor(modelItem => item.Email)</p>
+                <p class="card-text">
+                    <b>User Type</b>  @Html.DisplayFor(modelItem => item.UserType)
+                <p class="card-text"></p>
+                <div class="flex align-self-center">
+                    <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

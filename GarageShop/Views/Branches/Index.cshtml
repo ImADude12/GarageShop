@@ -4,56 +4,44 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Latitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Longitude)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Latitude)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Longitude)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<link rel="stylesheet" href="~/css/modelPannel.css" />
+<h1>Branches Pannel</h1>
+
+
+<form asp-action="Search">
+    <input name="queryName" placeholder="Enter something to search" />
+    <input type="submit" value="Search" class=" btn-primary" />
+</form>
+
+<a asp-action="Create" class="link-success">Add a new branch</a>
+
+
+<div class="cards-container">
+
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+
+                <h5 class="card-title">
+                   <b>Branch name</b> @Html.DisplayFor(modelItem => item.Name)
+                </h5>
+                <p class="card-text">
+                    <b>Adress</b> @Html.DisplayFor(modelItem => item.Address)
+                </p>
+                <p class="card-text"><b>Phone number</b>  @Html.DisplayFor(modelItem => item.PhoneNumber)</p>
+                <p class="card-text">
+                    <b>Latitude</b>  @Html.DisplayFor(modelItem => item.Latitude)
+                </p>  <p class="card-text">
+                          <b>Longitude</b>  @Html.DisplayFor(modelItem => item.Longitude)
+                </p>
+                <p class="card-text"></p>
+                <div class="flex align-self-center">
+                    <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

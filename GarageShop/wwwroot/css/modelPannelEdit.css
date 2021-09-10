@@ -1,0 +1,12 @@
+﻿
+
+.form-group {
+    display: flex;
+    width: 300px;
+}
+
+.control-label{
+    color: grey;
+    align-self: center;
+    margin-right: 10px;
+}
