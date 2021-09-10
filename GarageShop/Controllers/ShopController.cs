@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace GarageShop.Controllers
 {
+    [Authorize]
     public class ShopController : Controller
     {
         private readonly GarageShopContext _context;
@@ -24,13 +25,29 @@ namespace GarageShop.Controllers
             _context = context;
             _logger = logger;
         }
-        [Authorize]
-        public async Task<IActionResult> Index(int? categoryId)
+
+
+
+        public async Task<IActionResult> Index(string? prodName, int? categoryId, int? sellerId)
         {
-            dynamic mymodel = new ExpandoObject();
-            mymodel.Products =_context.Product.Include(a => a.Category).Where(a => (a.CategoryId.Equals(categoryId) || categoryId == null)).ToListAsync();
-            mymodel.Category = _context.Category.ToListAsync();
-                return View("Index", await mymodel);
+            IEnumerable<Models.Product> products = _context.Product.Include(a => a.Category).Include(a=>a.Seller);
+            if(prodName != null)
+            {
+                products = products.Where(p => p.Name.Contains(prodName));
+            }
+            if(categoryId != null)
+            {
+                products = products.Where(a => (a.CategoryId.Equals(categoryId)));
+            }
+            if (sellerId != null)
+            {
+                products = products.Where(a => (a.SellerId.Equals(sellerId)));
+            }
+
+            ViewBag.Products = products;
+            ViewBag.Category = _context.Category;
+            ViewBag.Seller = _context.Seller;
+            return View("Index");
         }
 
         public async Task<IActionResult> Search(string queryName)
