@@ -19,7 +19,7 @@
         @if (Context.User != null && Context.User.HasClaim(ClaimTypes.Role, "Admin"))
         {
 
-            <a class="nav-h2" asp-area="" asp-controller="users" asp-action="Logout">Admin Panel</a>
+            <a class="nav-h2" asp-area="" asp-controller="home" asp-action="admin">Admin Panel</a>
         }
         <a class="nav-h2" asp-area="" asp-controller="home" asp-action="Index">Home</a>
         <a class="nav-h2" asp-area="" asp-controller="home" asp-action="Game">Game</a>
