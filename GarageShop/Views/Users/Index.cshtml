@@ -9,12 +9,12 @@
 <h1>Users Pannel</h1>
 
 
-@*<form asp-action="Search">
-    <input name="queryName" placeholder="Enter something to search" />
-    <input type="submit" value="Search" class=" btn-primary" />
-</form>*@
+<form class="flex" asp-action="Search">
+    <input name="queryName" placeholder="User fullname..." />
+    <input type="submit" value="Search" class="search-btn btn btn-primary" />
+</form>
 
-<a asp-action="Create" class="link-success">Add User</a>
+
 
 
 <div class="cards-container">
@@ -34,9 +34,10 @@
                 <p class="card-text">
                     <b>User Type</b>  @Html.DisplayFor(modelItem => item.UserType)
                 <p class="card-text"></p>
-                <div class="flex align-self-center">
+                <div class="flex justify-space-between">
                     <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                    <a class="btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="btn" style="background-color:green" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn delete-btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </div>
             </div>
         </div>

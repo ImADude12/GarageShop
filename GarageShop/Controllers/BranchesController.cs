@@ -25,7 +25,11 @@ namespace GarageShop.Controllers
         {
             return View(await _context.Branch.ToListAsync());
         }
-
+        public async Task<IActionResult> Search(string queryName)
+        {
+            var searchContext = _context.Branch.Where(a => (a.Name.Contains(queryName) || queryName == null));
+            return View("Index", await searchContext.ToListAsync());
+        }
         // GET: Branches/all
         [HttpGet]
         public IEnumerable<Models.Branch> All()

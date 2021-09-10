@@ -1,20 +1,20 @@
 ﻿@model IEnumerable<GarageShop.Models.Branch>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Branches Pannel";
 }
 
 
 <link rel="stylesheet" href="~/css/modelPannel.css" />
-<h1>Branches Pannel</h1>
+<h1>@ViewData["Title"]</h1>
 
 
-<form asp-action="Search">
-    <input name="queryName" placeholder="Enter something to search" />
-    <input type="submit" value="Search" class=" btn-primary" />
+<form class="flex" asp-action="Search">
+    <input name="queryName" placeholder="Branch name..." />
+    <input type="submit" value="Search" class="search-btn btn btn-primary" />
 </form>
 
-<a asp-action="Create" class="link-success">Add a new branch</a>
+<a asp-action="Create" style="background-color:darkseagreen"  class="btn">Add a new branch</a>
 
 
 <div class="cards-container">
@@ -25,21 +25,21 @@
             <div class="card-body">
 
                 <h5 class="card-title">
-                   <b>Branch name</b> @Html.DisplayFor(modelItem => item.Name)
+                    <b>Branch name</b> @Html.DisplayFor(modelItem => item.Name)
                 </h5>
                 <p class="card-text">
-                    <b>Adress</b> @Html.DisplayFor(modelItem => item.Address)
+                    <b>@Html.DisplayNameFor(modelItem => item.Address)</b> @Html.DisplayFor(modelItem => item.Address)
                 </p>
                 <p class="card-text"><b>Phone number</b>  @Html.DisplayFor(modelItem => item.PhoneNumber)</p>
                 <p class="card-text">
-                    <b>Latitude</b>  @Html.DisplayFor(modelItem => item.Latitude)
+                    <b>@Html.DisplayNameFor(modelItem => item.Latitude)</b>  @Html.DisplayFor(modelItem => item.Latitude)
                 </p>  <p class="card-text">
-                          <b>Longitude</b>  @Html.DisplayFor(modelItem => item.Longitude)
+                    <b>@Html.DisplayNameFor(modelItem => item.Longitude)</b>  @Html.DisplayFor(modelItem => item.Longitude)
                 </p>
-                <p class="card-text"></p>
-                <div class="flex align-self-center">
+                <div class="flex justify-space-between">
                     <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                    <a class="btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="btn" style="background-color:green" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn delete-btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </div>
             </div>
         </div>

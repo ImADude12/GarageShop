@@ -3,46 +3,29 @@
 @{
     ViewData["Title"] = "Details";
 }
+<link rel="stylesheet" href="~/css/modelPannel.css" />
 
-<h1>Details</h1>
+<h1>Branch Details</h1>
 
-<div>
-    <h4>Branch</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Latitude)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Latitude)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Longitude)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Longitude)
-        </dd>
-    </dl>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+
+        <h5 class="card-title">
+            <b>Branch name</b> @Html.DisplayFor(model => model.Name)
+        </h5>
+        <p class="card-text">
+            <b>@Html.DisplayNameFor(model => model.Address)</b> @Html.DisplayFor(model => model.Address)
+        </p>
+        <p class="card-text"><b>Phone number</b>  @Html.DisplayFor(model => model.PhoneNumber)</p>
+        <p class="card-text">
+            <b>@Html.DisplayNameFor(model => model.Latitude)</b>  @Html.DisplayFor(model => model.Latitude)
+        </p>  <p class="card-text">
+            <b>@Html.DisplayNameFor(model => model.Longitude)</b>  @Html.DisplayFor(model => model.Longitude)
+        </p>
+        <div class="flex justify-space-between">
+            <a class="btn" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+            <a class="btn return" asp-action="Index">Return</a>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
