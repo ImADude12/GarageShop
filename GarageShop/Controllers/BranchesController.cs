@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GarageShop.Data;
 using GarageShop.Models;
+using System.Collections;
 
 namespace GarageShop.Controllers
 {
@@ -23,6 +24,13 @@ namespace GarageShop.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Branch.ToListAsync());
+        }
+
+        // GET: Branches/all
+        [HttpGet]
+        public IEnumerable<Models.Branch> All()
+        {
+            return _context.Branch.ToList();
         }
 
         // GET: Branches/Details/5
