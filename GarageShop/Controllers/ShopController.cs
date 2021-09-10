@@ -30,8 +30,38 @@ namespace GarageShop.Controllers
 
         public async Task<IActionResult> Index(string? prodName, int? categoryId, int? sellerId)
         {
-            IEnumerable<Models.Product> products = _context.Product.Include(a => a.Category).Include(a=>a.Seller);
-            if(prodName != null)
+            // 2 Joins
+            var products = (from p in _context.Product
+                         join s in _context.Seller on p.SellerId equals s.Id
+                         select new FullProduct
+                         {
+                             Id = p.Id,
+                             Name = p.Name,
+                             Image = p.Image,
+                             Price = p.Price,
+                             Description = p.Description,
+                             CategoryId = p.CategoryId,
+                             SellerId = p.SellerId,
+                             Tag = p.Tag,
+                             SellerName = s.Name
+                         });
+
+            products = (from p in products
+                            join c in _context.Category on p.CategoryId equals c.Id
+                            select new FullProduct
+                            {
+                                Id = p.Id,
+                                Name = p.Name,
+                                Image = p.Image,
+                                Price = p.Price,
+                                Description = p.Description,
+                                CategoryId = p.CategoryId,
+                                SellerId = p.SellerId,
+                                Tag = p.Tag,
+                                SellerName = p.SellerName,
+                                CategoryName = c.Name
+                            });
+            if (prodName != null)
             {
                 products = products.Where(p => p.Name.Contains(prodName));
             }
@@ -43,8 +73,7 @@ namespace GarageShop.Controllers
             {
                 products = products.Where(a => (a.SellerId.Equals(sellerId)));
             }
-
-            ViewBag.Products = products;
+            ViewBag.Products = products.ToList();
             ViewBag.Category = _context.Category;
             ViewBag.Seller = _context.Seller;
             return View("Index");

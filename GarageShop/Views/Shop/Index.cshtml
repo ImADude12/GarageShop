@@ -8,9 +8,7 @@
     <section class="">
         <div class="">
         </div>
-        <script type="text/javascript">
-            $('[name="prodName"]').val("afaf");
-        </script>
+
         <form method="get" enctype="multipart/form-data" asp-controller="Shop" asp-action="Index">
             <input name="prodName" placeholder="Enter something to search" />
             <select class="custom-select col-lg-3 col-md-3" name="categoryId">
@@ -32,6 +30,18 @@
             </div>
         </form>
 
+        <script type="text/javascript">
+            let searchParams = new URLSearchParams(window.location.search)
+            if (searchParams.has('prodName')) {
+                $('[name="prodName"]').val(searchParams.get('prodName'));
+            }
+            if (searchParams.has('categoryId')) {
+                $('[name="categoryId"]').val(searchParams.get('categoryId'));
+            }
+            if (searchParams.has('sellerId')) {
+                $('[name="sellerId"]').val(searchParams.get('sellerId'));
+            }
+        </script>
 
         @*<div class="categories-container">
             <h2>Categories</h2>
@@ -60,15 +70,17 @@
 
             </div>
             <div class="cars-container ">
-                @foreach (Product product in ViewBag.Products)
+                @foreach (var product in ViewBag.Products)
                 {
                     <div class="car ">
                         <div class="img-container">
                             <img src="@product.Image">
                         </div>
-                        <div class="flex justify-space-between" style="margin-bottom: 10px;">
+                        <div class="flex column align-center justify-space-between" style="margin-bottom: 10px;">
                             <h4 class="price">$@product.Price</h4>
                             <h4 class="car-type">@product.Name</h4>
+                            <h4 class="car-type">@product.SellerName</h4>
+                            <h4 class="car-type">@product.CategoryName</h4>
                         </div>
                         <p class="desc">@product.Description</p>
                         <!--          <div> <a href="#"  class="animated-button victoria-one">

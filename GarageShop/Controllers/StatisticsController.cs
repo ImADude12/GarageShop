@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace GarageShop.Controllers
 {
     public class StatisticsController : Controller
     {
-  /*      private readonly GarageShopContext _context;
+        private readonly GarageShopContext _context;
         private readonly ILogger<StatisticsController> _logger;
 
 
@@ -21,9 +22,13 @@ namespace GarageShop.Controllers
         {
             _context = context;
             _logger = logger;
-        }*/
+        }
         public IActionResult Index()
         {
+ 
+
+            ViewBag.Category = _context.Category;
+            ViewBag.Seller = _context.Seller;
             return View();
         }
 
@@ -31,6 +36,33 @@ namespace GarageShop.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        // GET: Statistics/products_category
+        [HttpGet]
+        public IEnumerable products_category()
+        {
+            var query = (from prod in _context.Product
+                         group prod.Name by prod.Category.Name into g
+                         select new
+                         {
+                             CategoryName = g.Key,
+                             ProductsCount = g.Count()
+                         });
+                        
+
+            return query;
+        }
+
+        public IEnumerable products_tags()
+        {
+            var query = (from tag in _context.Tag
+                         select new
+                         {
+                             Name = tag.Name,
+                             ProdCount = tag.Products.Count()
+                         });
+            return query;
         }
     }
 }

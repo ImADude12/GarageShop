@@ -53,6 +53,7 @@ namespace GarageShop.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
+            ViewData["Tags"] = new SelectList(_context.Tag, "Id", "Name");
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
             ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Image");
             return View();
@@ -63,7 +64,7 @@ namespace GarageShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Image,Description,Price,SellerId,CategoryId")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Name,Image,Description,Price,SellerId,CategoryId,Tag")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -71,6 +72,7 @@ namespace GarageShop.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Tags"] = new SelectList(_context.Tag, "Id", "Name",_context.Tag);
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", product.CategoryId);
             ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Image", product.SellerId);
             return View(product);
