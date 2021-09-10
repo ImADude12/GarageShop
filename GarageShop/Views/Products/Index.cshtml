@@ -1,48 +1,49 @@
 ﻿@model IEnumerable<GarageShop.Models.Product>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Products Pannel";
 }
 
+
 <link rel="stylesheet" href="~/css/modelPannel.css" />
-<h1>Products Pannel</h1>
+<h1>@ViewData["Title"]</h1>
 
 
-<form asp-action="Search">
-    <input name="queryName" placeholder="Enter something to search" />
-    <input type="submit" value="Search" class=" btn-primary" />
+<form class="flex" asp-action="Search">
+    <input name="queryName" placeholder="Product name..." />
+    <input type="submit" value="Search" class="search-btn btn btn-primary" />
 </form>
 
- <a asp-action="Create"  class="link-success">Add product</a>
+<a asp-action="Create" class="link-success">Add product</a>
 
 
 <div class="cards-container">
 
-@foreach (var item in Model)
-{
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-
-            <h5 class="card-title">
-                @Html.DisplayFor(modelItem => item.Name)
-            </h5>
-            <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.Image)" alt="Card image cap">
-            <p class="card-text">
-                <b>Description</b> @Html.DisplayFor(modelItem => item.Description)
-            </p>
-            <p class="card-text"><b>Price</b>  @Html.DisplayFor(modelItem => item.Price)</p>
-            <p class="card-text">
-                <b>Category</b>  @Html.DisplayFor(modelItem => item.Category.Name)
-            </p>  <p class="card-text">
-                <b>Seller</b>  @Html.DisplayFor(modelItem => item.Seller.Name)
-            </p>
-            <p class="card-text"></p>
-            <div class="flex align-self-center">
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </h5>
+                <div class="flex justify-center img-container">
+                    <img class="card-img-top" src="@Html.DisplayFor(modelItem => item.Image)" alt="Product img">
+                </div>
+                <p class="card-text">
+                    <b>Description</b> @Html.DisplayFor(modelItem => item.Description)
+                </p>
+                <p class="card-text"><b>Price</b>  @Html.DisplayFor(modelItem => item.Price)</p>
+                <p class="card-text">
+                    <b>Category</b>  @Html.DisplayFor(modelItem => item.Category.Name)
+                </p>  <p class="card-text">
+                    <b>Seller</b>  @Html.DisplayFor(modelItem => item.Seller.Name)
+                </p>
+            </div>
+            <div class="flex justify-space-between">
                 <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                <a class="btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="btn delete-btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </div>
         </div>
-    </div>
-}
+    }
 </div>
 

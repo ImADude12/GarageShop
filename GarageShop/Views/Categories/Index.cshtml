@@ -1,35 +1,37 @@
 ﻿@model IEnumerable<GarageShop.Models.Category>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Categories Pannel";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<link rel="stylesheet" href="~/css/modelPannel.css" />
+<h1>@ViewData["Title"]</h1>
+
+
+
+<form class="flex" asp-action="Search">
+    <input name="queryName" placeholder="Category name..." />
+    <input type="submit" value="Search" class="search-btn btn btn-primary" />
+</form>
+
+
+<a asp-action="Create" style="background-color:darkseagreen" class="btn">Add a new catagorey</a>
+<div class="cards-container">
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+
+                <h5 class="card-title">
+                    <b>Category name</b> @Html.DisplayFor(modelItem => item.Name)
+                </h5>
+                <div class="flex justify-space-between">
+                    <a class="btn" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn" style="background-color:green" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a class="btn delete-btn" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            </div>
+        </div>
+            }
+    </div>

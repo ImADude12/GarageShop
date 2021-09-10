@@ -3,22 +3,19 @@
 @{
     ViewData["Title"] = "Details";
 }
+<link rel="stylesheet" href="~/css/modelPannel.css" />
 
-<h1>Details</h1>
+<h1>Category Details</h1>
 
-<div>
-    <h4>Category</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+
+        <h5 class="card-title">
+            <b>Seller name</b> @Html.DisplayFor(model => model.Name)
+        </h5>
+        <div class="flex justify-space-between">
+            <a class="btn" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+            <a class="btn return" asp-action="Index">Return</a>
+        </div>
+    </div>
 </div>

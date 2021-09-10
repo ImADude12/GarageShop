@@ -25,6 +25,12 @@ namespace GarageShop.Controllers
             return View(await _context.Seller.ToListAsync());
         }
 
+        public async Task<IActionResult> Search(string queryName)
+        {
+            var searchContext = _context.Seller.Where(a => (a.Name.Contains(queryName) || queryName == null));
+            return View("Index", await searchContext.ToListAsync());
+        }
+
         // GET: Sellers/Details/5
         public async Task<IActionResult> Details(int? id)
         {

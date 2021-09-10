@@ -4,54 +4,34 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<link rel="stylesheet" href="~/css/modelPannel.css" />
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Seller)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Seller.Image)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.Name)
-        </dd class>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+<h3>Are you sure you want to delete  @Html.DisplayFor(model => model.Name)?</h3>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+
+        <div class="card-body">
+            <h5 class="card-title">
+                @Html.DisplayFor(model => model.Name)
+            </h5>
+            <div class="flex justify-center img-container">
+                <img class="card-img-top" src="@Html.DisplayFor(model => model.Image)" alt="Card image cap">
+            </div>
+            <p class="card-text">
+                <b>Description</b> @Html.DisplayFor(model => model.Description)
+            </p>
+            <p class="card-text"><b>Price</b>  @Html.DisplayFor(model => model.Price)</p>
+            <p class="card-text">
+                <b>Category</b>  @Html.DisplayFor(model => model.Category.Name)
+            </p>  <p class="card-text">
+                <b>Seller</b>  @Html.DisplayFor(model => model.Seller.Name)
+            </p>
+        </div>
+        <form class="flex" asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <a class="btn return" asp-action="Index">Return</a>
+            <input type="submit" value="Delete" class="btn delete-btn btn-danger" />
+        </form>
+    </div>
 </div>

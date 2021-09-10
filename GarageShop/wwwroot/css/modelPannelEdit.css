@@ -1,12 +1,26 @@
 ﻿
-
+form {
+    border: 2px solid black;
+    padding: 20px;
+    background-color:lightblue;
+}
 .form-group {
-    display: flex;
     width: 300px;
 }
 
 .control-label{
-    color: grey;
     align-self: center;
     margin-right: 10px;
 }
+.btn {
+    margin: 20px;
+    color: white;
+    border: 3px solid;
+    text-decoration: none;
+    transition: all .4s ease;
+}
+
+    .btn:hover, .btn:focus {
+        border: 3px solid white;
+        box-shadow: #222 1px 0 10px;
+    }
