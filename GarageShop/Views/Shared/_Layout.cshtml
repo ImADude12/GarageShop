@@ -12,47 +12,42 @@
     <title>@ViewData["Title"] - GarageShop</title>
 </head>
 
-<body>
-    <div class="flex column justify-space-between ">
-        <nav class="flex justify-space-between ">
-            <h2 style="margin:0px;margin-left: 20px;"><img style="margin-left: 20px; width: 50px;" src="~/img/c.png" alt=""></h2>
-            <div class="flex">
-                @using System.Security.Claims;
-                @if (Context.User != null && Context.User.HasClaim(ClaimTypes.Role, "Admin"))
-                {
+<nav class="flex justify-space-between ">
+    <h2 style="margin:0px;margin-left: 20px;"><img style="margin-left: 20px; width: 50px;" src="~/img/c.png" alt=""></h2>
+    <div class="flex">
+        @using System.Security.Claims;
+        @if (Context.User != null && Context.User.HasClaim(ClaimTypes.Role, "Admin"))
+        {
 
-                    <a class="nav-h2" asp-area="" asp-controller="users" asp-action="Logout">Admin Panel</a>
-                }
-                <a class="nav-h2" asp-area="" asp-controller="home" asp-action="Index">Home</a>
-                <a class="nav-h2" asp-area="" asp-controller="home" asp-action="Game">Game</a>
-                <a class="nav-h2" asp-area="" asp-controller="shop" asp-action="Index">Shop</a>
-                <a class="nav-h2" asp-area="" asp-controller="carts" asp-action="Index">Cart</a>
-                <a class="nav-h2" asp-area="" asp-controller="statistics" asp-action="Index">Statistics</a>
-                <a class="nav-h2" asp-area="" asp-controller="about" asp-action="Index">About</a>
+            <a class="nav-h2" asp-area="" asp-controller="users" asp-action="Logout">Admin Panel</a>
+        }
+        <a class="nav-h2" asp-area="" asp-controller="home" asp-action="Index">Home</a>
+        <a class="nav-h2" asp-area="" asp-controller="home" asp-action="Game">Game</a>
+        <a class="nav-h2" asp-area="" asp-controller="shop" asp-action="Index">Shop</a>
+        <a class="nav-h2" asp-area="" asp-controller="carts" asp-action="Index">Cart</a>
+        <a class="nav-h2" asp-area="" asp-controller="statistics" asp-action="Index">Statistics</a>
+        <a class="nav-h2" asp-area="" asp-controller="about" asp-action="Index">About</a>
 
-                @if (Context.User != null && Context.User.Claims.Count() > 0)
-                {
+        @if (Context.User != null && Context.User.Claims.Count() > 0)
+        {
 
-                    <a class="nav-h2" asp-area="" asp-controller="users" asp-action="Logout">Logout</a>
-                }
-                else
-                {
-                    <a class="nav-h2" asp-area="" asp-controller="users" asp-action="Login">Login</a>
-                }
-            </div>
-        </nav>
-
-        <div class="container flex flex-column align-center" >
-                @RenderBody()
-        </div>
-
-        <footer class="flex justify-center align-center">
-            <h2>thanks for using our app....</h2>
-        </footer>
+            <a class="nav-h2" asp-area="" asp-controller="users" asp-action="Logout">Logout</a>
+        }
+        else
+        {
+            <a class="nav-h2" asp-area="" asp-controller="users" asp-action="Login">Login</a>
+        }
     </div>
-    
+</nav>
 
+
+<body style="height: 90vh;">
+        @RenderBody()
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
+<footer class="flex justify-center align-center">
+    <h2>thanks for using our app....</h2>
+</footer>
 
 </html>
