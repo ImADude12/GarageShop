@@ -41,13 +41,18 @@
 </nav>
 
 
-<body style="height: 90vh;">
-        @RenderBody()
+<body style="height: 100vh;">
+    <div style="margin-bottom:10vh">
+    @RenderBody()
+    </div>
+
     @await RenderSectionAsync("Scripts", required: false)
+
+    <footer class="" style="position: fixed; left: 0; bottom: 0; width: 100%; background-color:aqua; text-align: center;">
+        <h2>thanks for using our app....</h2>
+    </footer>
 </body>
 
-<footer class="flex justify-center align-center">
-    <h2>thanks for using our app....</h2>
-</footer>
+
 
 </html>
