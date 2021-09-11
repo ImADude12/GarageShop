@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace GarageShop.Controllers
 {
-    [Authorize(Roles = "Editor")]
+    [Authorize(Roles = "Editor,Admin")]
     public class StatisticsController : Controller
     {
         private readonly GarageShopContext _context;

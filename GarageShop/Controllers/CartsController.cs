@@ -51,22 +51,58 @@ namespace GarageShop.Controllers
             if (ModelState.IsValid)
             {
                 int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-                Cart cart = _context.Cart.FirstOrDefault(c => c.UserId == userId);
+                Cart cart = _context.Cart.Include(a => a.Products).FirstOrDefault(c => c.UserId == userId);
                 try
                 {
                     if (cart.Products == null)
                     {
                         cart.Products = new List<Product>();
-                    }
-                    Product prod = _context.Product.FirstOrDefault(p => p.Id == ProdId);
-                    if (prod != null)
+                    } else if(cart.Products.FirstOrDefault(p => p.Id == ProdId) == null)
                     {
-                        cart.Products.Add(prod);
+                        Product prod = _context.Product.FirstOrDefault(p => p.Id == ProdId);
+                        if (prod != null)
+                        {
+                            cart.Products.Add(prod);
+                            _context.Update(cart);
+                            _context.Entry(cart).State = EntityState.Modified;
+                            await _context.SaveChangesAsync();
+                        }
+                    }
+                   
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CartExists(cart.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
+
+        public async Task<IActionResult> Remove_Product(int ProdId)
+        {
+            if (ModelState.IsValid)
+            {
+                int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                Cart cart = _context.Cart.Include(a => a.Products).FirstOrDefault(c => c.UserId == userId);
+                try
+                {
+                    if (cart.Products != null && cart.Products.FirstOrDefault(p => p.Id == ProdId) != null)
+                    {
+                        cart.Products.RemoveAll(p => p.Id == ProdId);
                         _context.Update(cart);
                         _context.Entry(cart).State = EntityState.Modified;
-
                         await _context.SaveChangesAsync();
+                        
                     }
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
