@@ -20,7 +20,7 @@
     </div>
     <form method="get" enctype="multipart/form-data" asp-controller="Carts" asp-action="Add_Product">
         <input name="ProdId" hidden value="@Html.DisplayFor(model => model.Id)" />    
-            <button class="btn-flip" data-back="Continue to buy" data-front="@Html.DisplayFor(model => model.Price)"></button>
+            <button style="border:none; outline:none; margin: 0; padding: 0; width: 95%;" class="btn-flip" data-back="Continue to buy" data-front="@Html.DisplayFor(model => model.Price)"></button>
     </form>
     
     <a asp-area="" asp-controller="shop" asp-action="Index" style="margin-top: 15px;" class="back">Back To Shop</a>
