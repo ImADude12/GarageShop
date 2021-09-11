@@ -9,13 +9,17 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="~/css/helpers.css">
     <link rel="stylesheet" href="~/css/nav.css">
+    <link rel="stylesheet" href="~/css/footer.css" />
     <title>@ViewData["Title"] - GarageShop</title>
 </head>
 
-<nav class="flex justify-space-between ">
+
+
+<nav class="flex justify-space-between " style="padding-bottom: 6px;">
     <h2 style="margin:0px;margin-left: 20px;"><img style="margin-left: 20px; width: 50px;" src="~/img/c.png" alt=""></h2>
     <div class="flex">
         @using System.Security.Claims;
+
         @if (Context.User != null && Context.User.HasClaim(ClaimTypes.Role, "Admin"))
         {
 
@@ -41,18 +45,120 @@
 </nav>
 
 
-<body style="height: 100vh;">
-    <div style="margin-bottom:10vh">
-    @RenderBody()
+<body >
+    <div style="margin-bottom:8vh">
+        @RenderBody()
     </div>
 
-    @await RenderSectionAsync("Scripts", required: false)
 
-    <footer class="" style="position: fixed; left: 0; bottom: 0; width: 100%; background-color:aqua; text-align: center;">
+
+    <!--<footer class="" style="position: fixed; left: 0; bottom: 0; width: 100%; background-color:aqua; text-align: center;">
         <h2>thanks for using our app....</h2>
-    </footer>
+    </footer>!-->
 </body>
 
 
-
+@await RenderSectionAsync("Scripts", required: false)
+<footer class="site-footer">
+    <div class="container">
+        <div style=" display: flex; margin-right: -15px; margin-left: -15px; justify-content: space-between !important;">
+            <div class="col-sm-12 col-md-6" style="margin-right: 50px !important;">
+                <h6>Summary</h6>
+                <p class="text-justify">A little bit <i>About us! </i> we really hope you enjoy our website as a costumer include as a seller and dont forget to try our game before you leave </p>
+            </div>
+            <div class="col-xs-6 col-md-3" style="max-width:15%;">
+                <h6>Members</h6>
+                <ul class="footer-links">
+                    <li><a>Eli guy</a></li>
+                    <li><a>Matan pinto</a></li>
+                    <li><a>Dudi samarel</a></li>
+                    <li><a>Tomer maruani</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <h6>Quick Links</h6>
+                <ul class="footer-links">
+                    <li><a href="/shop">SHOP</a></li>
+                    <li><a href="/carts">CART</a></li>
+                    <li><a href="/about">ABOUT</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
 </html>
+
+
+
+<!--
+    <footer class="site-footer">
+    <div class="container">
+        <div style=" display: flex; margin-right: -15px; margin-left: -15px; justify-content: space-between !important;">
+            <div class="col-sm-12 col-md-6">
+                <h6>Summary</h6>
+                <p class="text-justify">A little bit <i>About us! </i> we really hope you enjoy our website as a costumer include as a seller and dont forget to try our game before you leave </p>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <h6>Members</h6>
+                <ul class="footer-links">
+                    <li><a>Eli guy</a></li>
+                    <li><a>Matan pinto</a></li>
+                    <li><a>Dudi samarel</a></li>
+                    <li><a>Tomer maruani</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <h6>Quick Links</h6>
+                <ul class="footer-links">
+                    <li><a href="/shop">SHOP</a></li>
+                    <li><a href="/shop">SHOP</a></li>
+                    <li><a href="/carts">CART</a></li>
+                    <li><a href="/about">ABOUT</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+-->
+<!--Comment-->
+<!--<div class="container">
+     <div id="footer-content">
+         <div class="col-md-8 col-sm-6 col-xs-12">
+             <p class="copyright-text">
+                 Copyright &copy; 2017 All Rights Reserved by
+                 <a href="#">Our shop</a>.
+             </p>
+         </div>
+     </div>
+ </div>-->
+<!--
+<footer class="site-footer" style="width:100%">
+    <div class="flex justify-space-between">
+        <div style=" display: flex; margin-right: -15px; margin-left: -15px; justify-content: space-between !important;">
+            <div class="col-sm-12 col-md-6">
+                <h6>Summary</h6>
+                <p class="text-justify">A little bit <i>About us! </i> we really hope you enjoy our website as a costumer include as a seller and dont forget to try our game before you leave </p>
+            </div>
+            <div style="display: flex !important; justify-content: space-between !important;" >
+                <div class="col-xs-6 col-md-3" style="max-width: none !important;">
+                    <h6>Members</h6>
+                    <ul class="footer-links">
+                        <li><a>Eli guy</a></li>
+                        <li><a>Matan pinto</a></li>
+                        <li><a>Dudi samarel</a></li>
+                        <li><a>Tomer</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 col-md-3" style="max-width: none !important">
+                    <h6>Quick Links</h6>
+                    <ul class="footer-links">
+                        <li><a href="/shop">SHOP</a></li>
+                        <li><a href="/carts">CART</a></li>
+                        <li><a href="/about">ABOUT</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+-->
