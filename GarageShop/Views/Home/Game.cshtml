@@ -3,7 +3,7 @@
 }
 
 <link rel="stylesheet" href="~/css/home.css" />
-<div onload=init()>
+<div >
     <section class="flex justify-space-around" style="margin-inline-end: 2rem; margin-block-start: 0.5rem;">
         <div style="padding:0px 10px; box-shadow: 1px 1px 4px rgb(194, 194, 194);">
             <h1 style="text-align: center;">Pick Image</h1>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="btns-wrapper flex justify-center align-center">
                         <button class="line-switch flex align-center btn home-side-btn" onclick="onSwitchLines()">
-                            <img style="width: 28px;" src="../svg/swap2.png" alt="switch-line">
+                            <img style="width: 28px;" src="~/svg/swap2.png" alt="switch-line">
                         </button>
                         <button class="add-line btn home-side-btn" onclick="onAddLine()">
                             <img style="width: 25px;"
@@ -45,7 +45,7 @@
                         <button style="padding: 7px;"
                                 class="delete-line flex align-center just-center btn home-side-btn"
                                 onclick="onDeleteLine()">
-                            <img style="width: 25px;" src="./svg/cancel.png"
+                            <img style="width: 25px;" src="~/svg/cancel.png"
                                  alt="add-line">
                         </button>
                     </div>
@@ -64,7 +64,7 @@
                         </button>
                         <button class="btn first font-size" onclick="onFontSizeChange(2)">
                             <img class="svgs"
-                                 src="~~/svg/increase-font-icon.png" alt="">
+                                 src="~/svg/increase-font-icon.png" alt="">
                         </button>
                         <button class="btn first font-size" onclick="onFontSizeChange(-2)">
                             <img class="svgs"
@@ -98,8 +98,9 @@
             </div>
         </div>
     </section>
+    @section Scripts{
+        <script src="~/js/meme-service.js"></script>
+        <script src="~/js/meme-controller.js"></script>
+    }
 
-    <script src="~/js/storage-service.js"></script>
-    <script src="~/js/meme-service.js"></script>
-    <script src="~/js/meme-controller.js"></script>
 </div>

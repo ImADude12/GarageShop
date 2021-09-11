@@ -9,14 +9,17 @@ var gImgId;
 var keyWordsSizes = [25, 25, 25];
 
 /* Init() */
-
+$(window).on('load', function () {
+   init()
+});
 function init() {
+    console.log("init")
   renderImgs();
   gCanvas = document.querySelector("#my-canvas");
   gCtx = gCanvas.getContext("2d");
   setTimeout(() => {
     var img = new Image();
-    img.src = `img/1.jpg`;
+    img.src = `/img/1.jpg`;
     setMemeImgId(1);
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
     drawText();
@@ -36,8 +39,8 @@ function renderImgs(str = "") {
   var strHtml = "";
   // var imgs = filterImgs(str)
   for (var i = 0; i < imgs.length; i++) {
-    strHtml += `<div class="img-container">
-        <img src="img/${i + 1}.jpg" alt="" class="img" onclick="onImgClick(${
+      strHtml += `<div class="img-container">
+        <img src="/img/${i + 1}.jpg"alt="" class="img" onclick="onImgClick(${
       i + 1
     })" onclick="renderCanvas(${i + 1})">
     </div>`;
@@ -48,7 +51,7 @@ function renderImgs(str = "") {
 //
 function renderCanvas(imgId) {
   var img = new Image();
-  img.src = `img/${imgId}.jpg`;
+  img.src = `/img/${imgId}.jpg`;
   gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
   drawText();
 }
@@ -63,7 +66,7 @@ function onImgClick(imgId) {
   // document.querySelector('.words-container').classList.add('hidden')
   // document.querySelector('.search').classList.add('hidden')
   var img = new Image();
-  img.src = `img/${imgId}.jpg`;
+  img.src = `/img/${imgId}.jpg`;
   if (!imgId) imgId = 0;
   setMemeImgId(imgId);
   gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
@@ -244,7 +247,7 @@ function onLineHeightChange(diff) {
 
 function uploadImg(elForm, ev) {
   ev.preventDefault();
-  document.getElementById("imgData").value = gCanvas.toDataURL("image/jpeg");
+  document.getElementById("imgData").value = gCanvas.toDataURL("/image/jpeg");
 
   function onSuccess(uploadedImgUrl) {
     uploadedImgUrl = encodeURIComponent(uploadedImgUrl);
