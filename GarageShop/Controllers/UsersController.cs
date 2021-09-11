@@ -147,6 +147,14 @@ namespace GarageShop.Controllers
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
+
+            // Creating a cart for user
+            if (!_context.Cart.Any(o => o.UserId == account.Id))
+            {
+                Cart cart = new Cart { UserId = account.Id };
+                _context.Add(cart);
+                await _context.SaveChangesAsync();
+            }
         }
 
         // GET: Users/Logout

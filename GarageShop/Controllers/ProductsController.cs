@@ -13,6 +13,7 @@ namespace GarageShop.Controllers
     public class ProductsController : Controller
     {
         private readonly GarageShopContext _context;
+        //public DbSet<ProductTagView> ProductTagView { get; set; }
 
         public ProductsController(GarageShopContext context)
         {
@@ -53,9 +54,16 @@ namespace GarageShop.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-            ViewData["Tags"] = new SelectList(_context.Tag, "Id", "Name");
+   //         ProductTagView prod = new ProductTagView();
+   //         prod.TagsList = _context.Tag.Select(o => new SelectListItem
+			//{
+			//	Text = o.Name,
+			//	Value = o.Id.ToString()
+			//});
+            //ViewData["Tags"] = new SelectList(_context.Tag, "Id", "Name");
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
             ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Image");
+            //return View(prod);
             return View();
         }
 
@@ -66,13 +74,14 @@ namespace GarageShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Image,Description,Price,SellerId,CategoryId,Tag")] Product product)
         {
+           
             if (ModelState.IsValid)
             {
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Tags"] = new SelectList(_context.Tag, "Id", "Name",_context.Tag);
+            //ViewData["Tags"] = new SelectList(_context.Tag, "Id", "Name",_context.Tag);
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", product.CategoryId);
             ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Image", product.SellerId);
             return View(product);
@@ -91,9 +100,16 @@ namespace GarageShop.Controllers
             {
                 return NotFound();
             }
+
+            ProductTagView prod = new ProductTagView{ Id = product.Id, Name = product.Name, Image = product.Image, Description = product.Description, Price = product.Price, SellerId = product.SellerId, CategoryId = product.CategoryId };
+            prod.TagsList = _context.Tag.Select(o => new SelectListItem
+            {
+                Text = o.Name,
+                Value = o.Id.ToString()
+            });
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", product.CategoryId);
             ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Image", product.SellerId);
-            return View(product);
+            return View(prod);
         }
 
         // POST: Products/Edit/5
@@ -101,7 +117,7 @@ namespace GarageShop.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Image,Description,Price,SellerId,CategoryId")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Image,Description,Price,SellerId,CategoryId,TagIds")] ProductTagView product)
         {
             if (id != product.Id)
             {
@@ -112,7 +128,14 @@ namespace GarageShop.Controllers
             {
                 try
                 {
-                    _context.Update(product);
+                    var prod = _context.Product
+                    .Include(i => i.Tag).First(i => i.Id == product.Id);
+                    foreach (int TagId in product.TagIds)
+                    {
+                        prod.Tag.Add(_context.Tag.Where(a => a.Id == TagId).FirstOrDefault());
+                    }
+
+                    _context.Update(prod);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
