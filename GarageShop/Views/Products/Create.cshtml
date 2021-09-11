@@ -61,11 +61,10 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     <script>
     const PostOnFacebook = () => {
-       setTimeout(() => {
-        const price = $("#price").val();
-        const imgUrl= $("#img-src").val();
-        const message = `New Product! just ${price}$ !!`;
-        const access_token = "EAACjDjqTE9oBAIop4l01rmaHag3gZACjuUhgKscsXfSWL8ziCKosJPpB1xbaaZBZBZAUrixql0ZCObvqHMsxP2IgFyxVeBtYKwGDXyfxf4KXAYXMZAI70qAoLlWuqGswYiUx3ZB1rIkxMKyjuHnhsgYgcanES7t7jdSJIOx31HxFicjatJD4x8ZCcZBzFnL5H8LkZD"
+        var price = $("#price").val();
+        var imgUrl= $("#img-src").val();
+        var message = `New Product! just ${price}$ !!`;
+        var access_token = "EAACjDjqTE9oBAOJERENDD6i0ZBOtZBHdnOSEbUjMTkWb51c0WUznHo08wO7Qy7wnnr8WFrhZAHl2S0nQAAnU3sePMoVYVsAyUhtbTCZCFPAOKY9TCkya5lTWcqQiCmzLU2NmlXNI6HYYuZCZBVbjsyTJAgrrmtZCZAJLkgYWWKEXkDEMfPPbdt8DuHhugrYVkWgupxzo2SLwU7FbrACoeUrm"
         FB.api(
             '/101557498947006/photos',
             'POST',
@@ -74,7 +73,6 @@
                 console.log(response)
             }
         );
-    }, 1000)
     }
     </script>
 }
