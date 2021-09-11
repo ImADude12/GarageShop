@@ -64,11 +64,16 @@ namespace GarageShop.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,Image")] Seller seller)
         {
-            if (ModelState.IsValid)
+            var q = _context.Seller.FirstOrDefault(s => s.Name == seller.Name);
+            if (q == null)
             {
                 _context.Add(seller);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                ViewBag.Error = "This Seller Exists!";
             }
             return View(seller);
         }

@@ -60,9 +60,17 @@ namespace GarageShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(category);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var q = _context.Category.FirstOrDefault(s => s.Name == category.Name);
+                if (q == null)
+                {
+                    _context.Add(category);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ViewBag.Error = "This Category Exists!";
+                }
             }
             return View(category);
         }

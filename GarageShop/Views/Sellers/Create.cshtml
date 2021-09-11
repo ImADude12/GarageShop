@@ -29,6 +29,10 @@
         <a asp-action="Index" class="btn btn-dark">Return</a>
         <input type="submit" value="Create" class="btn btn-primary" />
     </div>
+    @if (ViewBag.Error != null)
+    {
+        <div class="text-danger">@ViewBag.Error</div>
+    }
 </form>
 
 @section Scripts {
