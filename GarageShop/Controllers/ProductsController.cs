@@ -56,16 +56,8 @@ namespace GarageShop.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-   //         ProductTagView prod = new ProductTagView();
-   //         prod.TagsList = _context.Tag.Select(o => new SelectListItem
-			//{
-			//	Text = o.Name,
-			//	Value = o.Id.ToString()
-			//});
-            //ViewData["Tags"] = new SelectList(_context.Tag, "Id", "Name");
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
             ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Name");
-            //return View(prod);
             return View();
         }
 
@@ -83,7 +75,6 @@ namespace GarageShop.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            //ViewData["Tags"] = new SelectList(_context.Tag, "Id", "Name",_context.Tag);
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", product.CategoryId);
             ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Name", product.SellerId);
             return View(product);
@@ -132,13 +123,21 @@ namespace GarageShop.Controllers
                 {
                     var prod = _context.Product
                     .Include(i => i.Tag).First(i => i.Id == product.Id);
-                    foreach (int TagId in product.TagIds)
-                    {
-                        prod.Tag.Add(_context.Tag.Where(a => a.Id == TagId).FirstOrDefault());
+                    if (product.TagIds != null){
+                        foreach (int TagId in product.TagIds)
+                        {
+                            prod.Tag.Add(_context.Tag.Where(a => a.Id == TagId).FirstOrDefault());
+                        }   
                     }
-
+                    prod.Name = product.Name;
+                    prod.Image = product.Image;
+                    prod.Description = product.Description;
+                    prod.Price = product.Price;
+                    prod.SellerId = product.SellerId;
+                    prod.CategoryId = product.CategoryId;
                     _context.Update(prod);
                     await _context.SaveChangesAsync();
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {

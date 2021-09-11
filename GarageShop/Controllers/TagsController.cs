@@ -64,9 +64,16 @@ namespace GarageShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tag);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var q = _context.Tag.FirstOrDefault(t => t.Name == tag.Name);
+                if (q == null)
+                {
+                    _context.Add(tag);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                } else
+                {
+                    ViewBag.Error = "This Tag Exists!";
+                }
             }
             return View(tag);
         }
