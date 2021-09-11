@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using GarageShop.Data;
 using GarageShop.Models;
 using System.Collections;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GarageShop.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class BranchesController : Controller
     {
         private readonly GarageShopContext _context;
@@ -20,17 +22,33 @@ namespace GarageShop.Controllers
             _context = context;
         }
 
+
         // GET: Branches
         public async Task<IActionResult> Index()
         {
             return View(await _context.Branch.ToListAsync());
         }
-        public async Task<IActionResult> Search(string queryName)
+        public async Task<IActionResult> Search(string BranchName, string Address, string PhoneNumber)
         {
-            var searchContext = _context.Branch.Where(a => (a.Name.Contains(queryName) || queryName == null));
-            return View("Index", await searchContext.ToListAsync());
+            var branches = from branch in _context.Branch select branch;
+
+            if (BranchName != null)
+            {
+                branches = branches.Where(b => b.Name.Contains(BranchName));
+            }
+            if (Address != null)
+            {
+                branches = branches.Where(b => (b.Address.Contains(Address)));
+            }
+            if (PhoneNumber != null)
+            {
+                branches = branches.Where(b => (b.PhoneNumber.Contains(PhoneNumber)));
+            }
+
+            return View("Index", await branches.ToListAsync());
         }
         // GET: Branches/all
+        [AllowAnonymous]
         [HttpGet]
         public IEnumerable<Models.Branch> All()
         {

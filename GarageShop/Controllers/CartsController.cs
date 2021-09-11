@@ -12,6 +12,7 @@ using System.Security.Claims;
 
 namespace GarageShop.Controllers
 {
+    [Authorize]
     public class CartsController : Controller
     {
         private readonly GarageShopContext _context;
@@ -21,7 +22,6 @@ namespace GarageShop.Controllers
             _context = context;
         }
 
-        [Authorize(Roles = "Admin")]
         // GET: Carts
         public async Task<IActionResult> Index()
         {
@@ -33,6 +33,13 @@ namespace GarageShop.Controllers
 
             //Cart cart = _context.Cart.FirstOrDefault(c => c.UserId == userId);
             ViewBag.Products = products;
+            ViewBag.User = _context.User.FirstOrDefault(u => u.Id == userId);
+            var sum = 0;
+            foreach (Product prod in products)
+            {
+                sum += prod.Price;
+            }
+            ViewBag.TotalPrice = sum;
             return View();
 
         }
@@ -77,6 +84,7 @@ namespace GarageShop.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Carts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -96,6 +104,7 @@ namespace GarageShop.Controllers
             return View(cart);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Carts/Create
         public IActionResult Create()
         {
@@ -106,6 +115,7 @@ namespace GarageShop.Controllers
         // POST: Carts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,UserId")] Cart cart)
@@ -134,6 +144,7 @@ namespace GarageShop.Controllers
         }
 
         // GET: Carts/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -153,6 +164,7 @@ namespace GarageShop.Controllers
         // POST: Carts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,UserId")] Cart cart)
@@ -187,6 +199,7 @@ namespace GarageShop.Controllers
         }
 
         // GET: Carts/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -206,6 +219,7 @@ namespace GarageShop.Controllers
         }
 
         // POST: Carts/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -216,6 +230,7 @@ namespace GarageShop.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Admin")]
         private bool CartExists(int id)
         {
             return _context.Cart.Any(e => e.Id == id);

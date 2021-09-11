@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GarageShop.Controllers
 {
@@ -40,6 +41,7 @@ namespace GarageShop.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult Admin()
         {
 

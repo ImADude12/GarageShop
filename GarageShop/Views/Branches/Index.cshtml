@@ -9,12 +9,30 @@
 <h1>@ViewData["Title"]</h1>
 
 
-<form class="flex" asp-action="Search">
-    <input name="queryName" placeholder="Branch name..." />
-    <input type="submit" value="Search" class="search-btn btn btn-primary" />
+<form style="margin:50px; padding-bottom:40px; border-bottom: 1px solid #dddddd;" class="flex justify-center" method="get" enctype="multipart/form-data" asp-action="Search">
+    <input class="form-control" type="text" style="margin: 10px;font-size: 14px; width: 250px;" name="BranchName" placeholder="Enter something to search" />
+    <input class="form-control" type="text" style="margin: 10px;font-size: 14px; width: 250px;" name="Address" placeholder="Enter something to search" />
+    <input class="form-control" type="text" style="margin: 10px;font-size: 14px; width: 250px;" name="PhoneNumber" placeholder="Enter something to search" />
+
+
+    <div style="margin-top: 10px;" class="col-lg-1 col-md-1">
+        <button class="btn btn-primary">Search</button>
+    </div>!
 </form>
 
-<a asp-action="Create" style="background-color:darkseagreen"  class="btn">Add a new branch</a>
+<script type="text/javascript">
+            let searchParams = new URLSearchParams(window.location.search)
+    if (searchParams.has('BranchName')) {
+        $('[name="BranchName"]').val(searchParams.get('BranchName'));
+            }
+    if (searchParams.has('Address')) {
+        $('[name="Address"]').val(searchParams.get('Address'));
+            }
+    if (searchParams.has('PhoneNumber')) {
+        $('[name="PhoneNumber"]').val(searchParams.get('PhoneNumber'));
+            }
+</script>
+<a asp-action="Create" style="background-color:darkseagreen" class="btn">Add a new branch</a>
 
 
 <div class="cards-container">
