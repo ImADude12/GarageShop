@@ -29,6 +29,7 @@ namespace GarageShop.Models
 
         public int SellerId { get; set; }
 
+
         public string SellerName { get; set; }
 
         public int CategoryId { get; set; }

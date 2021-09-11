@@ -17,20 +17,23 @@ function getMap() {
         })
         
         function initialMap(branches) {
-            console.log(branches)
         var map = new Microsoft.Maps.Map('.map-container', {
             credentials: 'AtQ5syZg_44nIy3Vc1B2mRtzIlUMpPHTlAXyywJbXIWVWWgqfIjmDJ0fUyeC-sSo',
             center: new Microsoft.Maps.Location(branches[0].latitude, branches[0].longitude),
             mapTypeId: Microsoft.Maps.MapTypeId.road,
             zoom: 8
         });
+            var str = '|';
         branches.forEach(branch => {
             createPin(branch.latitude, branch.longitude, map, branch.name);
+            str += ` ${branch.name} ${branch.address} ${branch.phoneNumber} |`
         });
+        $("#branches").text(str);
         }
     }
     catch (Ex) {
         alert("Failed try to get map again")
+        console.log(Ex)
         setTimeout(() => getMap(), 10000)
         }
 }

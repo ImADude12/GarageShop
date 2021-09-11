@@ -40,7 +40,7 @@ namespace GarageShop.Controllers
 
         // GET: Statistics/products_category
         [HttpGet]
-        public IEnumerable products_category()
+        public IEnumerable Products_category()
         {
             var query = (from prod in _context.Product
                          group prod.Name by prod.Category.Name into g
@@ -54,7 +54,7 @@ namespace GarageShop.Controllers
             return query;
         }
 
-        public IEnumerable products_tags()
+        public IEnumerable Products_tags()
         {
             var query = (from tag in _context.Tag
                          select new

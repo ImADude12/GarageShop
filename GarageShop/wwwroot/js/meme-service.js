@@ -3,9 +3,8 @@
 
 /* globals */
 
-
-var gImgs = [{ id: 1, url: `img/1.jpg`,},
-    { id: 2, url: `img/2.png` },
+var gImgs = [{ id: 1, url: `~/img/1.jpg`,},
+    { id: 2, url: `~/img/2.png` },
    
 ];
 
@@ -104,8 +103,6 @@ function addLine(txt = "newline") {
 }
 
 
-/* View - fonts aligns colors and stuffs.. */
-
 
 function changeFont(font) {
     gMeme.lines[gCurrLineIdx].font = font;
@@ -128,28 +125,3 @@ function changeFontSize(diff) {
 }
 
 
-/* questions for later */
-
-// how to put an svg currectly and how to put it on specifically on input 
-
-// how to fix guthub bug with the imgs 
-
-// ask about the home page "bug", maybe setTimout is the answer 
-
-// how to work with outsided libraries currectly (import libraires) , same to fonts and all the other stuffs :)
-
-// how to build the css structure and keep it clean 
-
-// when and where we should use flex and grid (the differnce)
-
-// responsive - shor brief on how to do it correectly
-
-// ask about window functions and how it works 
-
-// use strict 
-
-// ui && ux
-
-// how to choose colors correctly and how to improve the user experience , i cant see it by myself :(
-
-// id,classes and all the score caluclations - how it works
