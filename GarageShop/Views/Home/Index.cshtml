@@ -3,13 +3,13 @@
 }
 
 <link rel="stylesheet" href="~/css/home2.css" />
-<header style="height:50vh !important;" >
+<header style="height:50vh !important;">
 
     <!-- This div is  intentionally blank. It creates the transparent black overlay over the video which you can modify in the CSS -->
     <div class="overlay"></div>
     <!-- The HTML5 video element that will create the background video on the header -->
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-        <source src= '~/video/cars.mp4' type="video/mp4">
+        <source src='~/video/cars.mp4' type="video/mp4">
     </video>
 
     <!-- The header content -->
@@ -33,9 +33,18 @@
                 <p>We used a lot of clean css in our project and we also added some fun game</p>
                 <p class="mb-0">
 
-                   Created By : Eli guy, Matan pinto, Dudi samarel and Tomer maruani - Enjoy
+                    Created By : Eli guy, Matan pinto, Dudi samarel and Tomer maruani - Enjoy
                 </p>
             </div>
         </div>
+        <div style="background-color:#f5ebeb5c; padding:30px; font-weight:bold;margin-top: 30px;display: flex; align-items: center; justify-content: center;" class="weather-container;">
+            <p style="margin-inline-end: 10px" class="date"></p>
+            <p style="margin-inline-end: 10px" class="location"></p>
+            <img class="condition-icon" />
+            <p style="margin-inline-end: 10px" class="temp"></p>
+            <p style="margin-inline-end: 10px" class="condition"></p>
+        </div>
     </div>
 </section>
+<script src="~/js/home.js"></script>
+

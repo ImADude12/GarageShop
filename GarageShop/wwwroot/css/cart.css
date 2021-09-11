@@ -54,7 +54,6 @@ img {
     object-fit: contain;
 }
 .car {
-    width:70%;
     display: flex;
     justify-content: unset;
     align-items: center;

@@ -12,6 +12,10 @@ a {
   color: #0366d6;
 }
 
+.condition-icon {
+    width: 5vw;
+}
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -38,4 +42,3 @@ html {
   position: relative;
   min-height: 100%;
 }
-
