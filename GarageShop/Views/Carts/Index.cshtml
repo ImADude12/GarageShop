@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Cart";
-    Layout = "_PannelLayout";
 }
 <link rel="stylesheet" href="~/css/cart.css" />
 
@@ -21,9 +20,7 @@
             }
         </header>
         <div class="cars-wrapper" style="width: 100%; margin-left:10%" >
-            <div class="cars-container">   
-                
-
+            <div class="cars-container">                
                 @foreach(Product product in ViewBag.Products)
             {
                 <div class="car ">
