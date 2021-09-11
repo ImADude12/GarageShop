@@ -38,6 +38,8 @@ namespace GarageShop
             }
             );
 
+            services.AddMvc().AddControllersAsServices();
+
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
                 options => 
             { 

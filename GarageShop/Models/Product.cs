@@ -35,5 +35,7 @@ namespace GarageShop.Models
         public Category Category { get; set; }
 
         public List<Tag> Tag { get; set; }
+
+        public List<Cart> Carts { get; set; }
     }
 }

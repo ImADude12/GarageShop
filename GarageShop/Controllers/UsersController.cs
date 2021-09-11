@@ -17,10 +17,13 @@ namespace GarageShop.Controllers
     public class UsersController : Controller
     {
         private readonly GarageShopContext _context;
+        private readonly CartsController _cartsController;
 
-        public UsersController(GarageShopContext context)
+
+        public UsersController(GarageShopContext context, CartsController cartsController)
         {
             _context = context;
+            _cartsController = cartsController;
         }
 
         // GET: Users
@@ -74,7 +77,12 @@ namespace GarageShop.Controllers
 
                     var u = _context.User.FirstOrDefault(u => u.Username == user.Username && u.Password == user.Password);
                     Signin(u);
-
+                    if (!_context.Cart.Any(o => o.UserId == u.Id))
+                    {
+                        //_context.Cart.
+                        Cart cart = new Cart { UserId = u.Id };
+                        var res = await _cartsController.Create(cart);
+                    }
                     return RedirectToAction(nameof(Index), "Home");
                 } else
                 {
@@ -120,6 +128,12 @@ namespace GarageShop.Controllers
                 {
                     ViewData["Error"] = "User and/or password are incorrectasfasfd";
                     Signin(q.First());
+                    if (!_context.Cart.Any(o => o.UserId == q.First().Id))
+                    {
+                        //_context.Cart.
+                        Cart cart = new Cart { UserId = q.First().Id};
+                        var res = await _cartsController.Create(cart);
+                    }
                     return RedirectToAction(nameof(Index), "Home");
                 }
                 else
@@ -129,11 +143,12 @@ namespace GarageShop.Controllers
             }
             return View(user);
         }
-        private async void Signin(User account)
+        private async Task Signin(User account)
         {
             var claims = new List<Claim> {
                 new Claim(ClaimTypes.Name, account.Username),
-                new Claim(ClaimTypes.Role, account.UserType.ToString()), 
+                new Claim(ClaimTypes.Role, account.UserType.ToString()),
+                new Claim(ClaimTypes.NameIdentifier, account.Id.ToString())
             };
             var claimsIdentity = new ClaimsIdentity(
                 claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -149,12 +164,7 @@ namespace GarageShop.Controllers
                 authProperties);
 
             // Creating a cart for user
-            if (!_context.Cart.Any(o => o.UserId == account.Id))
-            {
-                Cart cart = new Cart { UserId = account.Id };
-                _context.Add(cart);
-                await _context.SaveChangesAsync();
-            }
+            
         }
 
         // GET: Users/Logout
