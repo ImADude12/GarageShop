@@ -54,13 +54,14 @@ img {
     object-fit: contain;
 }
 .car {
+    min-width: 50%;
     display: flex;
     justify-content: unset;
     align-items: center;
     box-shadow: 5px 10px 10px 10px #e4e4e4;
     padding: 30px;
-    margin:25px;
-    position:relative;
+    margin: 25px;
+    position: relative;
 }
 
 .remove-btn:hover {
