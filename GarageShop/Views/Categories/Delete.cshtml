@@ -14,7 +14,7 @@
         <div class="card-body">
 
             <h5 class="card-title">
-                <b>Category name</b> @Html.DisplayFor(model => model.Name)
+                <b>@Html.DisplayNameFor(model => model.Name)</b> @Html.DisplayFor(model => model.Name)
             </h5>
 
         <form class="flex" asp-action="Delete">

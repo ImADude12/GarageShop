@@ -15,12 +15,12 @@
             <div class="card-body">
 
                 <h5 class="card-title">
-                    <b>FullName</b>  @Html.DisplayFor(model => model.FullName)
+                    <b>@Html.DisplayNameFor(model => model.FullName)</b>  @Html.DisplayFor(model => model.FullName)
                 </h5>
                 <p class="card-text">
-                    <b>Username</b> @Html.DisplayFor(model => model.Username)
+                    <b>@Html.DisplayNameFor(model => model.FullName)</b> @Html.DisplayFor(model => model.Username)
                 </p>
-                <p class="card-text"><b>Email</b>  @Html.DisplayFor(model => model.Email)</p>
+                <p class="card-text"><b>@Html.DisplayNameFor(model => model.Email)</b>  @Html.DisplayFor(model => model.Email)</p>
                 <p class="card-text">
                     <b>User Type</b>  @Html.DisplayFor(model => model.UserType)
                 <p class="card-text"></p>
