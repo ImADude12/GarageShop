@@ -9,7 +9,7 @@
 <h1>@ViewData["Title"]</h1>
 
 
-<form class="flex" asp-action="Search">
+<form class="flex " asp-action="Search">
     <input name="queryName" placeholder="Product name..." />
     <input type="submit" value="Search" class="search-btn btn btn-primary" />
 </form>
@@ -17,7 +17,7 @@
 <a asp-action="Create" style="background-color:darkseagreen" class="btn">Add a new Product</a>
 
 
-<div class="cards-container">
+<div class="cards-container" >
 
     @foreach (var item in Model)
     {

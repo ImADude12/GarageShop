@@ -11,7 +11,7 @@
         </div>
 
         <form style="margin:50px" class="flex justify-center" method="get" enctype="multipart/form-data" asp-controller="Shop" asp-action="Index">
-           <input style="margin:10px; width:250px;" name="prodName" placeholder="Enter something to search" />
+            <input style="margin:10px; width:250px;" name="prodName" placeholder="Enter something to search" />
             <select style="margin:10px;" class="custom-select col-lg-3 col-md-3" name="categoryId">
                 <option value="" selected>Search By Category</option>
                 @foreach (Category category in ViewBag.Category)

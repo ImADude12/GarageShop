@@ -1,0 +1,23 @@
+.admin-pannel-wrapper h1 {
+    background-color: #111111bf;
+    font-family: "Arial Black", sans-serif;
+    font-size: 4.5em;
+    letter-spacing: -1px;
+    color: white;
+    padding: 29px;
+    margin:0px;
+    margin-top: 20px;
+}
+.pannel-container{
+    padding:50px;
+}
+.link-container {
+    box-shadow: 1px 1px 12px 1px #888888;
+    padding-block-end: 3px;
+}
+.admin-pannel-wrapper a {
+    font-weight: 600;
+    font-size: 20px;
+    color: rgb(26 26 26);
+    margin: 15px
+}

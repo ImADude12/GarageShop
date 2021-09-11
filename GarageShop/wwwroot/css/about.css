@@ -9,7 +9,7 @@ body {
     background-color: rgb(184, 176, 176);
 }
 
-h1 {
+.h1 {
     box-shadow: 14px 28px 20px 0px #f1e4e4;
     font-family: 'Londrina Shadow', cursive;
     font-size: 4rem;
@@ -18,27 +18,26 @@ h1 {
     background-color: rgb(59, 59, 59);
 }
 
-p {
+.p {
     font-family: 'Londrina Shadow', cursive;
     color: rgb(71, 71, 71);
     font-size: 1.5rem;
 }
-div {
-    white-space: pre-line;
-}
+
 .map-container {
     position: relative;
     width: 50vw;
     height: 50vh;
+    white-space: pre-line;
 }
 
 .about-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    white-space: pre-line;
 }
 
-
-span{
+.span{
     color: black;
 }

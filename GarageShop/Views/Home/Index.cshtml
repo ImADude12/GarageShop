@@ -2,49 +2,40 @@
     ViewData["Title"] = "Home Page";
 }
 
-<link rel="stylesheet" href="~/css/home.css" />
-<div onload=init()>
-    <section class="flex justify-space-around" style="margin-inline-end: 2rem; margin-block-start: 0.5rem;">
-        <div class="home-side-content-wrapper flex column">
-            <div class="weather-container">
-                <p class="date"></p>
-                <p class="location"></p>
-                <img class="condition-icon" />
-                <p class="temp"></p>
-                <p class="condition"></p>
+<link rel="stylesheet" href="~/css/home2.css" />
+<header style="height:50vh !important;" >
 
-            </div>
-            <h1 style="color: #111; font-family: 'Trocchi', serif; font-size: 41px; font-weight: normal; line-height: 48px; margin: 0; margin-top: 10px;">Welcome to our Cars-Shop Website!</h1>
-            <h3 style="color: #111; font-family: 'Open Sans', sans-serif; font-size: 30px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; margin-bottom: 0px; margin-top: 25px;">Enjoy the game and sign in</h3>
-            <div class="flex justify-center" style="width: 90%; margin-top: 50px; margin-bottom: 20px;">
-                <video style="width: 100%; height: 100%;" autoplay muted controls>
-                    <source src= '~/video/cars.mp4' type="video/mp4"/>
-                </video>
-            </div>
-            <div class="flex wrap">
-                <div class="animated-div">
-                    <a href="#" class="x home-btn home-btn-sm animated-button victoria-one">
-                        Sign
-                        up
-                    </a>
-                </div>
-                <div class="animated-div">
-                    <a href="#"
-                       class="x home-btn home-btn-sm animated-button victoria-two">Login</a>
-                </div>
-                <div class="animated-div">
-                    <a href="#"
-                       class="x home-btn home-btn-sm animated-button victoria-three">Register</a>
-                </div>
-                <div class="animated-div">
-                    <a href="#" class="x home-btn home-btn-sm animated-button victoria-four">About</a>
-                </div>
+    <!-- This div is  intentionally blank. It creates the transparent black overlay over the video which you can modify in the CSS -->
+    <div class="overlay"></div>
+    <!-- The HTML5 video element that will create the background video on the header -->
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src= '~/video/cars.mp4' type="video/mp4">
+    </video>
+
+    <!-- The header content -->
+    <div class="container h-100">
+        <div class="d-flex h-100 text-center align-items-center">
+            <div class="w-100 text-white">
+                <h1 class="display-3">Welcome to Our Garage-shop</h1>
+                <p class="lead mb-0">Enjoy our website</p>
             </div>
         </div>
-    </section>
+    </div>
+</header>
 
-    <script src="~/js/storage-service.js"></script>
-    <script src="~/js/meme-service.js"></script>
-    <script src="~/js/meme-controller.js"></script>
-    <script src="~/js/home.js"></script>
-</div>
+<!-- Page section example for content below the video header -->
+<section class="my-5">
+    <div class="container">
+        <div class="row" style="text-align:center">
+            <div class="content-container col-md-8 mx-auto">
+                <p>Enjoy our website, here you are able to buy cars as you would like to i recomend you to visit our shop and also sign-in/sign up if you are new guest</p>
+                <p>Here are your options : you can join as <span></span> a <code style="color:#cd2c2c">Seller</code> also as a <span></span> <code style="color:#cd2c2c">Costumer</code> and of course as<span> </span><code style="color:#cd2c2c">Admin</code> if you have permissions</p>
+                <p>We used a lot of clean css in our project and we also added some fun game</p>
+                <p class="mb-0">
+
+                   Created By : Eli guy, Matan pinto, Dudi samarel and Tomer maruani - Enjoy
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
