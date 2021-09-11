@@ -7,13 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GarageShop.Data;
 using GarageShop.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GarageShop.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductsController : Controller
     {
         private readonly GarageShopContext _context;
-        //public DbSet<ProductTagView> ProductTagView { get; set; }
 
         public ProductsController(GarageShopContext context)
         {
@@ -32,6 +33,7 @@ namespace GarageShop.Controllers
             return View("Index", await searchContext.ToListAsync());
         }
         // GET: Products/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -62,7 +64,7 @@ namespace GarageShop.Controllers
 			//});
             //ViewData["Tags"] = new SelectList(_context.Tag, "Id", "Name");
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name");
-            ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Image");
+            ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Name");
             //return View(prod);
             return View();
         }
@@ -83,7 +85,7 @@ namespace GarageShop.Controllers
             }
             //ViewData["Tags"] = new SelectList(_context.Tag, "Id", "Name",_context.Tag);
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", product.CategoryId);
-            ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Image", product.SellerId);
+            ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Name", product.SellerId);
             return View(product);
         }
 
@@ -108,7 +110,7 @@ namespace GarageShop.Controllers
                 Value = o.Id.ToString()
             });
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", product.CategoryId);
-            ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Image", product.SellerId);
+            ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Name", product.SellerId);
             return View(prod);
         }
 
@@ -152,7 +154,7 @@ namespace GarageShop.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Name", product.CategoryId);
-            ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Image", product.SellerId);
+            ViewData["SellerId"] = new SelectList(_context.Seller, "Id", "Name", product.SellerId);
             return View(product);
         }
 

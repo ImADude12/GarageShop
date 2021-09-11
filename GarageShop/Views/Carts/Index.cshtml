@@ -9,10 +9,21 @@
 <section class="class-wrappper">
     <div style="width: 70vw; margin: 20px;" class="flex wrap">
         <header style="margin:0 auto; margin-bottom: 20px;">
-            <h1 >Welcome to Your Cart</h1>
+
+            @if (ViewBag.TotalPrice == 0)
+            {
+                <h1>Your Cart Is Empty!!!</h1>
+                <img src="https://c4.wallpaperflare.com/wallpaper/803/434/441/mazda-miata-drift-smoke-motion-blur-hd-wallpaper-thumb.jpg" />
+            }
+            else
+            {
+                <h1>Welcome to Your Cart</h1>
+            }
         </header>
         <div class="cars-wrapper" style="width: 100%; margin-left:10%" >
-            <div class="cars-container">
+            <div class="cars-container">   
+                
+
                 @foreach(Product product in ViewBag.Products)
             {
                 <div class="car ">
@@ -37,19 +48,17 @@
 <div class="cart-side-bar flex column" style="position: fixed;">
     <h1>Cart</h1>
         <div>
-            <span style="color: green; font-size: 25px;">+</span> <span>Trust</span>
+            <span style="color: green; font-size: 25px;"></span> <span>@ViewBag.User.FullName</span>
         </div>
         <div>
-            <span style="color: green; font-size: 25px;">+</span> <span>Price</span>
+            <span style="color: green; font-size: 25px;"></span> <span>@ViewBag.User.Email</span>
         </div>
         <div>
-            <span style="color: green; font-size: 25px;">+</span> <span>Reallibilty</span>
         </div>
-        <p style="font-size:22px; margin-block-start:15px" class="price"> Price : <span>100$</span></p>
+        
+        <p style="font-size:22px; margin-block-start:15px" class="price">Total Price : <span>@ViewBag.TotalPrice$</span></p>
         <div>
-            <a style="margin-top: 23px !important;
-    padding: 10px 20px;
-" href="#" class="animated-button victoria-one">
+            <a style="margin-top: 23px !important; padding: 10px 20px;" class="animated-button victoria-one" asp-area="" asp-controller="home" asp-action="Index">
                 Purchase
             </a>
         </div>

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using GarageShop.Data;
 using GarageShop.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GarageShop.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SellersController : Controller
     {
         private readonly GarageShopContext _context;

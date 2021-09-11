@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 
 namespace GarageShop.Controllers
 {
-    [Authorize]
     public class ShopController : Controller
     {
         private readonly GarageShopContext _context;

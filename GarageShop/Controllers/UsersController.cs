@@ -11,9 +11,11 @@ using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GarageShop.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
         private readonly GarageShopContext _context;
@@ -26,11 +28,13 @@ namespace GarageShop.Controllers
             _cartsController = cartsController;
         }
 
+        
         // GET: Users
         public async Task<IActionResult> Index()
         {
             return View(await _context.User.ToListAsync());
         }
+
         public async Task<IActionResult> Search(string queryName)
         {
             var searchContext = _context.User.Where(a => (a.Username.Contains(queryName) || queryName == null));
@@ -54,12 +58,14 @@ namespace GarageShop.Controllers
             return View(user);
         }
 
+        [AllowAnonymous]
         // GET: Users/Register
         public IActionResult Register()
         {
             return View();
         }
 
+        [AllowAnonymous]
         // POST: Users/Register
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -92,12 +98,14 @@ namespace GarageShop.Controllers
             return View(user);
         }
 
+        [AllowAnonymous]
         // GET: Users/AccessDenied
         public IActionResult AccessDenied()
         {
             return View();
         }
 
+        [AllowAnonymous]
         // GET: Users/Login
         public IActionResult Login()
         {
@@ -107,6 +115,7 @@ namespace GarageShop.Controllers
         // POST: Users/Login
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login([Bind("Id,Username,Password")] User user)
@@ -143,6 +152,8 @@ namespace GarageShop.Controllers
             }
             return View(user);
         }
+
+        [AllowAnonymous]
         private async Task Signin(User account)
         {
             var claims = new List<Claim> {
@@ -167,6 +178,7 @@ namespace GarageShop.Controllers
             
         }
 
+        [AllowAnonymous]
         // GET: Users/Logout
         public async Task<IActionResult> Logout()
         {
@@ -254,6 +266,7 @@ namespace GarageShop.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool UserExists(int id)
         {
