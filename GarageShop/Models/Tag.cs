@@ -12,6 +12,7 @@ namespace GarageShop.Models
 
         [Required(ErrorMessage = "Please Enter Name")]
         [StringLength(200, MinimumLength = 2, ErrorMessage = "Length Must Be Between 2 To 200")]
+        [Display(Name = "Tag name")]
         public string Name { get; set; }
 
         public List<Product> Products { get; set; }

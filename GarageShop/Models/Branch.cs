@@ -13,6 +13,7 @@ namespace GarageShop.Models
 
         [Required(ErrorMessage = "Please Enter Name")]
         [StringLength(10, MinimumLength = 2, ErrorMessage = "Length Must Be Between 2 To 10")]
+        [DisplayName("Branch name")]
         public string Name { get; set; }
 
         // TODO: Should it be string?

@@ -13,7 +13,7 @@
     <div class="card-body">
 
         <h5 class="card-title">
-            <b>Seller name</b> @Html.DisplayFor(model => model.Name)
+            <b>@Html.DisplayNameFor(model => model.Name)</b> @Html.DisplayFor(model => model.Name)
         </h5>
         <div class="flex justify-space-between">
             <a class="btn" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>

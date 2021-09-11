@@ -12,11 +12,13 @@ namespace GarageShop.Models
 
         [Required(ErrorMessage = "Please Enter Name")]
         [StringLength(200, MinimumLength = 2, ErrorMessage = "Length Must Be Between 2 To 200")]
+        [Display(Name = "Product name")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please Enter Image Url")]
         [StringLength(200, MinimumLength = 5, ErrorMessage = "Length Must Be Between 5 To 200")]
         [DataType(DataType.ImageUrl)]
+        [Display(Name = "Image url")]
         public String Image { get; set; }
 
         [StringLength(200, MinimumLength = 2, ErrorMessage = "Length Must Be Between 2 To 200")]

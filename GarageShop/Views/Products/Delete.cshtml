@@ -21,9 +21,9 @@
                 <img class="card-img-top" src="@Html.DisplayFor(model => model.Image)" alt="Card image cap">
             </div>
             <p class="card-text">
-                <b>Description</b> @Html.DisplayFor(model => model.Description)
+                <b>@Html.DisplayNameFor(model => model.Description)</b> @Html.DisplayFor(model => model.Description)
             </p>
-            <p class="card-text"><b>Price</b>  @Html.DisplayFor(model => model.Price)</p>
+            <p class="card-text"><b>@Html.DisplayNameFor(model => model.Price)</b>  @Html.DisplayFor(model => model.Price)</p>
             <p class="card-text">
                 <b>Category</b>  @Html.DisplayFor(model => model.Category.Name)
             </p>  <p class="card-text">
