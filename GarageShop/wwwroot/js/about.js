@@ -17,17 +17,25 @@ function getMap() {
         })
         
         function initialMap(branches) {
+            const lat = branches.length > 0 ? branches[0].latitude : 31.97102;
+            const lon = branches.length > 0 ? branches[0].longitude : 34.78939;
         var map = new Microsoft.Maps.Map('.map-container', {
             credentials: 'AtQ5syZg_44nIy3Vc1B2mRtzIlUMpPHTlAXyywJbXIWVWWgqfIjmDJ0fUyeC-sSo',
-            center: new Microsoft.Maps.Location(branches[0].latitude, branches[0].longitude),
+            center: new Microsoft.Maps.Location( lat,  lon),
             mapTypeId: Microsoft.Maps.MapTypeId.road,
             zoom: 8
         });
+
+            if (branches.length > 0) {
             var str = '|';
         branches.forEach(branch => {
             createPin(branch.latitude, branch.longitude, map, branch.name);
             str += ` ${branch.name} ${branch.address} ${branch.phoneNumber} |`
         });
+            }
+            else {
+            str = "no branches in db yet.."
+            }
         $("#branches").text(str);
         }
     }

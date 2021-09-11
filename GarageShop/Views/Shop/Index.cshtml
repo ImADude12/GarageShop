@@ -10,7 +10,7 @@
         <div class="">
         </div>
 
-        <form style="margin:50px; padding-bottom:40px; border-bottom: 1px solid #dddddd;" class="flex justify-center" method="get" enctype="multipart/form-data" asp-controller="Shop" asp-action="Index">
+        <form id="my_form" style="margin:50px; padding-bottom:40px; border-bottom: 1px solid #dddddd;" class="flex justify-center" method="get" enctype="multipart/form-data" asp-controller="Shop" asp-action="Index">
             <input class="form-control" type="text" style="margin: 10px;font-size: 14px; width: 250px;" name="prodName" placeholder="Enter something to search" />
             <select style="margin:10px;" class="custom-select col-lg-3 col-md-3" name="categoryId">
                 <option value="" selected>Search By Category</option>
@@ -27,7 +27,7 @@
                 }
             </select>
             <div class="col-lg-1 col-md-1">
-            <a class="btn btn-lg" href="#">
+            <a onclick="document.getElementById('my_form').submit();" class="btn btn-lg" href="#">
                 <span>Search</span>
             </a>
             </div>

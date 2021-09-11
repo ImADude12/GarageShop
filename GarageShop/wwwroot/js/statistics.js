@@ -6,7 +6,10 @@ $(window).on('load', function () {
 const getStatistics = () => {
 
     $.get('Statistics/products_category', function (data) {
-
+        var clrArray = [];
+        for (var i = 0; i < data.length; i++) {
+            clrArray.push('#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6))
+        }
 
     var svg = d3.select("#pie-svg"),
         width = svg.attr("width"),
@@ -19,7 +22,7 @@ const getStatistics = () => {
 
     var ordScale = d3.scaleOrdinal()
         .domain(data)
-        .range(['#ffd384', '#94ebcd', '#fbaccc', '#d3e0ea', '#fa7f72', '#2a2a2a','#b64edb']);
+        .range(clrArray);
 
     var pie = d3.pie().value(function (d) {
         return d.productsCount;
@@ -51,20 +54,9 @@ const getStatistics = () => {
     });
 
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //Bar Chart
-    const sample = [
-        {
-            country: 'Rust',
-            value: 78.9,
-            color: 'red'
-        },
-        {
-            country: 'Kotlin',
-            value: 100,
-            color: '#00a2ee'
-        }
-    ];
-
+    //Bar Chart      
+    $.get('Statistics/Products_tags', function (data) {
+        data.forEach(d => d.color = '#' + (0x1000000 + Math.random() * 0xffffff).toString(16).substr(1, 6))
     // set the dimensions and margins of the graph
     var margin = { top: 30, right: 30, bottom: 70, left: 60 },
         width = 460 - margin.left - margin.right,
@@ -84,7 +76,7 @@ const getStatistics = () => {
         // X axis
         var x = d3.scaleBand()
             .range([0, width])
-            .domain(sample.map(function (d) { return d.country; }))
+            .domain(data.map(function (d) { return d.name; }))
             .padding(0.2);
         chartSvg.append("g")
             .attr("transform", "translate(0," + height + ")")
@@ -95,20 +87,25 @@ const getStatistics = () => {
 
         // Add Y axis
         var y = d3.scaleLinear()
-            .domain([0, 300])
+            .domain([0, 20])
             .range([height, 0]);
         chartSvg.append("g")
             .call(d3.axisLeft(y));
 
         // Bars
     chartSvg.selectAll("mybar")
-        .data(sample)
+        .data(data)
             .enter()
             .append("rect")
-            .attr("x", function (d) { return x(d.country); })
-            .attr("y", function (d) { return y(d.value); })
+            .attr("x", function (d) { return x(d.name); })
+            .attr("y", function (d) { return y(d.prodCount); })
             .attr("width", x.bandwidth())
-        .attr("height", function (d) { return height - y(d.value); })
+        .attr("height", function (d) { return height - y(d.prodCount); })
         .attr("fill", function (d) {  return d.color;})
+
+
+    })
+
+   
 
 }

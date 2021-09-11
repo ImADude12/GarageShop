@@ -2,11 +2,13 @@
 
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Users Pannel";
+    Layout = "_PannelLayout";
+
 }
 
 <link rel="stylesheet" href="~/css/modelPannel.css" />
-<h1>Users Pannel</h1>
+<h1>@ViewData["Title"]</h1>
 
 
 <form class="flex" asp-action="Search">
