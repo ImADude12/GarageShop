@@ -98,7 +98,7 @@ function addLine(txt = "newline") {
         color: 'black',
         stroke: 'white',
         font: 'impact',
-        height: 180
+        height: 60
     });
 }
 
