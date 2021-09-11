@@ -10,8 +10,8 @@
         <div class="">
         </div>
 
-        <form style="margin:50px" class="flex justify-center" method="get" enctype="multipart/form-data" asp-controller="Shop" asp-action="Index">
-           <input style="margin:10px; width:250px;" name="prodName" placeholder="Enter something to search" />
+        <form id="my_form" style="margin:50px; padding-bottom:40px; border-bottom: 1px solid #dddddd;" class="flex justify-center" method="get" enctype="multipart/form-data" asp-controller="Shop" asp-action="Index">
+            <input class="form-control" type="text" style="margin: 10px;font-size: 14px; width: 250px;" name="prodName" placeholder="Enter something to search" />
             <select style="margin:10px;" class="custom-select col-lg-3 col-md-3" name="categoryId">
                 <option value="" selected>Search By Category</option>
                 @foreach (Category category in ViewBag.Category)
@@ -26,10 +26,45 @@
                     <option value="@seller.Id">@seller.Name</option>
                 }
             </select>
-            <div style="margin-top: 10px;" class="col-lg-1 col-md-1">
-                <button class="btn btn-primary">Search</button>
+            <div class="col-lg-1 col-md-1">
+            <a onclick="document.getElementById('my_form').submit();" class="btn btn-lg" href="#">
+                <span>Search</span>
+            </a>
             </div>
+            <!--<div style="margin-top: 10px;" class="col-lg-1 col-md-1">
+        <button class="btn btn-primary">Search</button>
+    </div>!-->
         </form>
+
+
+        <!--<form style="margin:50px; padding-bottom:40px; border-bottom: 1px solid #dddddd;" class="flex justify-center" method="get" enctype="multipart/form-data" asp-controller="Shop" asp-action="Index">
+        <div class="form-row">
+            <div class="col-7">
+                <input type="text" class="form-control" placeholder="City">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Zip">
+            </div>
+            <div class="col>
+                <select style="margin:10px;" class="custom-select col-lg-3 col-md-3" name="sellerId">
+                    <option value="selected">Search By Seller</option>
+                    @foreach (Seller seller in ViewBag.Seller)
+                    {
+                        <option value="@seller.Id">@seller.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <select style="margin:10px;" class="custom-select col-lg-3 col-md-3" name="sellerId">
+                    <option value="selected">Search By Seller</option>
+                    @foreach (Seller seller in ViewBag.Seller)
+                    {
+                        <option value="@seller.Id">@seller.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </form>-->
 
         <script type="text/javascript">
             let searchParams = new URLSearchParams(window.location.search)
@@ -45,55 +80,46 @@
         </script>
 
         @*<div class="categories-container">
-                <h2>Categories</h2>
-                @foreach (Category category in ViewBag.Category)
-                {
-                    <a class="container" asp-area="" asp-route-categoryId="@category.Id">
-                        @category.Name
-                    </a>
+            <h2>Categories</h2>
+            @foreach (Category category in ViewBag.Category)
+            {
+                <a class="container" asp-area="" asp-route-categoryId="@category.Id">
+                    @category.Name
+                </a>
 
-                }
-            </div>
+            }
+        </div>
 
-            <div class="categories-container">
-                <h2>Seller</h2>
-                @foreach (Seller seller in ViewBag.Seller)
-                {
-                    <a class="container" asp-area="" asp-route-sellerId="@seller.Id">
-                        @seller.Name
-                    </a>
+        <div class="categories-container">
+            <h2>Seller</h2>
+            @foreach (Seller seller in ViewBag.Seller)
+            {
+                <a class="container" asp-area="" asp-route-sellerId="@seller.Id">
+                    @seller.Name
+                </a>
 
-                }
-            </div>*@
+            }
+        </div>*@
 
         <div class="cars-wrapper">
-            <div class="flex column align-center justify-center" style="padding: 20px;">
-
-            </div>
             <div class="cars-container ">
                 @foreach (var product in ViewBag.Products)
                 {
                     <div class="car ">
                         <div class="img-container">
-                            <img class="img" src="@product.Image">
+                            <img src="@product.Image">
                         </div>
-                        <div class="flex column align-center justify-space-between" style="margin-bottom: 10px;">
+                        <div class="flex justify-space-between" style="margin-bottom: 10px;">
                             <h4 class="price">$@product.Price</h4>
                             <h4 class="car-type">@product.Name</h4>
-                            <h4 class="car-type">@product.SellerName</h4>
-                            <h4 class="car-type">@product.CategoryName</h4>
                         </div>
                         <p class="desc">@product.Description</p>
-                        <!--          <div> <a href="#"  class="animated-button victoria-one">
-                                Continue</a>
-                        </div> -->
                         <div>
                             <a href="/products/details/@product.Id" class="animated-button victoria-one">
                                 Continue
                             </a>
                         </div>
-
-                    </div>
+                </div>
                 }
 
             </div>
@@ -102,3 +128,30 @@
         </div>
     </section>
 </div>
+
+
+
+
+<!--Form copy-->
+<!--
+    <form style="margin:50px; padding-bottom:40px; border-bottom: 1px solid #dddddd;" class="flex justify-center" method="get" enctype="multipart/form-data" asp-controller="Shop" asp-action="Index">
+    <input style="margin:10px; width:250px;" name="prodName" placeholder="Enter something to search" />
+    <select style="margin:10px;" class="custom-select col-lg-3 col-md-3" name="categoryId">
+        <option value="" selected>Search By Category</option>
+        @foreach (Category category in ViewBag.Category)
+        {
+            <option value="@category.Id">@category.Name</option>
+        }
+    </select>
+    <select style="margin:10px;" class="custom-select col-lg-3 col-md-3" name="sellerId">
+        <option value="" selected>Search By Seller</option>
+        @foreach (Seller seller in ViewBag.Seller)
+        {
+            <option value="@seller.Id">@seller.Name</option>
+        }
+    </select>
+    <div style="margin-top: 10px;" class="col-lg-1 col-md-1">
+        <button class="btn btn-primary">Search</button>
+    </div>
+</form>
+    -->

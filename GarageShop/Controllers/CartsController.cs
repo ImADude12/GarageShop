@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using GarageShop.Data;
 using GarageShop.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace GarageShop.Controllers
 {
@@ -24,9 +25,56 @@ namespace GarageShop.Controllers
         // GET: Carts
         public async Task<IActionResult> Index()
         {
-            var garageShopContext = _context.Cart.Include(c => c.User);
-            return View(await _context.Product.ToListAsync());
+            int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
+            var products = (from cart2 in _context.Cart
+                            where cart2.UserId == userId
+                         select cart2.Products  ).First();
+
+            //Cart cart = _context.Cart.FirstOrDefault(c => c.UserId == userId);
+            ViewBag.Products = products;
+            return View();
+
+        }
+
+        // Http Get - /carts/add_product{id}
+        [HttpGet]
+        public async Task<IActionResult> Add_Product(int ProdId)
+        {
+            if (ModelState.IsValid)
+            {
+                int userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                Cart cart = _context.Cart.FirstOrDefault(c => c.UserId == userId);
+                try
+                {
+                    if (cart.Products == null)
+                    {
+                        cart.Products = new List<Product>();
+                    }
+                    Product prod = _context.Product.FirstOrDefault(p => p.Id == ProdId);
+                    if (prod != null)
+                    {
+                        cart.Products.Add(prod);
+                        _context.Update(cart);
+                        _context.Entry(cart).State = EntityState.Modified;
+
+                        await _context.SaveChangesAsync();
+                    }
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CartExists(cart.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
         }
 
         // GET: Carts/Details/5
@@ -64,9 +112,22 @@ namespace GarageShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(cart);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (!_context.Cart.Any(o => o.UserId == cart.UserId))
+                {
+                    _context.Add(cart);
+                    try
+                    {
+                        var res = await _context.SaveChangesAsync();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    return RedirectToAction(nameof(Index));
+                } else
+                {
+
+                }
             }
             ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Email", cart.UserId);
             return View(cart);

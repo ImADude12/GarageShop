@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GarageShop.Models.Product>
+﻿
 
 @{
     ViewData["Title"] = "Cart";
@@ -10,99 +10,25 @@
         <header style="margin:0 auto; margin-bottom: 20px;">
             <h1 >Welcome to Your Cart</h1>
         </header>
-        <div class="cars-wrapper" style="width: 100%; margin-left:20px" >
+        <div class="cars-wrapper" style="width: 100%; margin-left:10%" >
             <div class="cars-container">
+                @foreach(Product product in ViewBag.Products)
+            {
                 <div class="car ">
-                    <div class="flex column justify0center align-center">
+                    <div class="flex column justify-center align-center">
                         <div style="margin-left: 30px;" class="img-container">
-                            <img src="../img/car-img.jfif">
+                            <img src="@product.Image">
                         </div>
-                        <h4 style="margin:10px;" class="price">Price : 50$</h4>
-                        <h4 style="margin:10px;" class="car-type">Type : Volvo</h4>
+                        <h4 style="margin:10px;" class="price">$@product.Price</h4>
+                        <h4 style="margin:10px;" class="car-type">@product.Name</h4>
                     </div>
-                    <p style="margin: 50px;" class="desc">Lorem ipsum dolor sit amet tol consectetur adipisicing elit. </p>
+                    <p style="margin: 50px;" class="desc">@product.Description</p>
                     <div style="outline:none; padding:20px; width:50px; height:50px; color:darkred; position:absolute; top:-4%; right:1%;">
                         <button class="remove-btn" style="outline:none; background:none;color:darkred">X</button>
                     </div>
                 </div>
-                <div class="car ">
-                    <div class="flex column justify0center align-center">
-                        <div style="margin-left: 30px;" class="img-container">
-                            <img src="../img/car-img.jfif">
-                        </div>
-                        <h4 style="margin:10px;" class="price">Price : 50$</h4>
-                        <h4 style="margin:10px;" class="car-type">Type : Volvo</h4>
-                    </div>
-                    <p style="margin: 50px;" class="desc">Lorem ipsum dolor sit amet tol consectetur adipisicing elit. </p>
-                    <div style="outline:none; padding:20px; width:50px; height:50px; color:darkred; position:absolute; top:-4%; right:1%;">
-                        <button class="remove-btn" style="outline:none; background:none;color:darkred">X</button>
-                    </div>
-                </div>
-                <div class="car ">
-                    <div class="flex column justify0center align-center">
-                        <div style="margin-left: 30px;" class="img-container">
-                            <img src="../img/car-img.jfif">
-                        </div>
-                        <h4 style="margin:10px;" class="price">Price : 50$</h4>
-                        <h4 style="margin:10px;" class="car-type">Type : Volvo</h4>
-                    </div>
-                    <p style="margin: 50px;" class="desc">Lorem ipsum dolor sit amet tol consectetur adipisicing elit. </p>
-                    <div style="outline:none; padding:20px; width:50px; height:50px; color:darkred; position:absolute; top:-4%; right:1%;">
-                        <button class="remove-btn" style="outline:none; background:none;color:darkred">X</button>
-                    </div>
-                </div>
-                <div class="car ">
-                    <div class="flex column justify0center align-center">
-                        <div style="margin-left: 30px;" class="img-container">
-                            <img src="../img/car-img.jfif">
-                        </div>
-                        <h4 style="margin:10px;" class="price">Price : 50$</h4>
-                        <h4 style="margin:10px;" class="car-type">Type : Volvo</h4>
-                    </div>
-                    <p style="margin: 50px;" class="desc">Lorem ipsum dolor sit amet tol consectetur adipisicing elit. </p>
-                    <div style="outline:none; padding:20px; width:50px; height:50px; color:darkred; position:absolute; top:-4%; right:1%;">
-                        <button class="remove-btn" style="outline:none; background:none;color:darkred">X</button>
-                    </div>
-                </div>
-                <div class="car ">
-                    <div class="flex column justify0center align-center">
-                        <div style="margin-left: 30px;" class="img-container">
-                            <img src="../img/car-img.jfif">
-                        </div>
-                        <h4 style="margin:10px;" class="price">Price : 50$</h4>
-                        <h4 style="margin:10px;" class="car-type">Type : Volvo</h4>
-                    </div>
-                    <p style="margin: 50px;" class="desc">Lorem ipsum dolor sit amet tol consectetur adipisicing elit. </p>
-                    <div style="outline:none; padding:20px; width:50px; height:50px; color:darkred; position:absolute; top:-4%; right:1%;">
-                        <button class="remove-btn" style="outline:none; background:none;color:darkred">X</button>
-                    </div>
-                </div>
-                <div class="car ">
-                    <div class="flex column justify0center align-center">
-                        <div style="margin-left: 30px;" class="img-container">
-                            <img src="../img/car-img.jfif">
-                        </div>
-                        <h4 style="margin:10px;" class="price">Price : 50$</h4>
-                        <h4 style="margin:10px;" class="car-type">Type : Volvo</h4>
-                    </div>
-                    <p style="margin: 50px;" class="desc">Lorem ipsum dolor sit amet tol consectetur adipisicing elit. </p>
-                    <div style="outline:none; padding:20px; width:50px; height:50px; color:darkred; position:absolute; top:-4%; right:1%;">
-                        <button class="remove-btn" style="outline:none; background:none;color:darkred">X</button>
-                    </div>
-                </div>
-                <div class="car ">
-                    <div class="flex column justify0center align-center">
-                        <div style="margin-left: 30px;" class="img-container">
-                            <img src="../img/car-img.jfif">
-                        </div>
-                        <h4 style="margin:10px;" class="price">Price : 50$</h4>
-                        <h4 style="margin:10px;" class="car-type">Type : Volvo</h4>
-                    </div>
-                    <p style="margin: 50px;" class="desc">Lorem ipsum dolor sit amet tol consectetur adipisicing elit. </p>
-                    <div style="outline:none; padding:20px; width:50px; height:50px; color:darkred; position:absolute; top:-4%; right:1%;">
-                        <button class="remove-btn" style="outline:none; background:none;color:darkred">X</button>
-                    </div>
-                </div>
+            }
+                
             </div>
         </div>
     </div>
